@@ -126,7 +126,7 @@ export default function Features() {
           {[
             { value: "6638", label: "零重码字数" },
             { value: "94.3%", label: "一击字占比" },
-            { value: "2032", label: "一击即出字" },
+            { value: "2152", label: "一击即出字" },
             { value: "0.25%", label: "词重码率" },
           ].map((stat, index) => (
             <div key={stat.label} className="text-center">
