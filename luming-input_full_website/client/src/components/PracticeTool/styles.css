@@ -1,0 +1,126 @@
+/* 深度定制的武侠水墨练习工具样式 */
+.practice-container {
+  --ink-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.char-display-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  transition: var(--ink-transition);
+}
+
+.main-char-img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 1px rgba(0,0,0,0.1));
+  transition: var(--ink-transition);
+}
+
+.sub-chars-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  max-width: 400px;
+}
+
+.sub-char-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: var(--ink-transition);
+}
+
+.sub-char-img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* 仿古籍边框 */
+.ancient-border {
+  position: relative;
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.ancient-border::before,
+.ancient-border::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--primary);
+  border-style: solid;
+}
+
+.ancient-border::before {
+  top: 10px;
+  left: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.ancient-border::after {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+/* 输入框高级感 */
+.ink-input {
+  background: transparent !important;
+  border-bottom: 2px solid var(--border) !important;
+  border-radius: 0 !important;
+  font-family: var(--font-serif);
+  transition: var(--ink-transition);
+}
+
+.ink-input:focus {
+  border-bottom-color: var(--primary) !important;
+  box-shadow: none !important;
+}
+
+.ink-input.correct {
+  border-bottom-color: #10b981 !important;
+  color: #10b981;
+}
+
+.ink-input.incorrect {
+  border-bottom-color: #ef4444 !important;
+  color: #ef4444;
+  animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* 连击火焰效果 */
+.streak-fire {
+  display: inline-block;
+  animation: flicker 1s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+
+/* 进度条水墨感 */
+.ink-progress {
+  height: 6px !important;
+  background-color: var(--muted) !important;
+}
+
+.ink-progress > div {
+  background: linear-gradient(90deg, var(--ink-light), var(--ink-black)) !important;
+  transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1) !important;
+}

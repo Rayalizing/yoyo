@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦌 麓鸣字根练习工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen">
+    <!-- 侧边栏 -->
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- 侧边栏头部 -->
+        <div class="sidebar-header">
+            <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" onclick="toggleSidebar()">
+                <span class="sidebar-toggle-icon">❮</span>
+            </button>
+            <h3 class="sidebar-title">设置</h3>
+        </div>
+        
+        <!-- 侧边栏内容 -->
+        <div class="sidebar-content">
+            <!-- 主题切换 -->
+            <button class="sidebar-btn" id="theme-toggle-btn" onclick="toggleTheme()" title="切换主题">
+                <span class="sidebar-btn-icon" id="theme-icon">🌙</span>
+                <span class="sidebar-btn-text">主题切换</span>
+            </button>
+            
+            <!-- 专注模式 -->
+            <button class="sidebar-btn" id="focus-mode-btn" onclick="toggleFocusMode()" title="专注模式">
+                <span class="sidebar-btn-icon" id="focus-mode-icon">👁️</span>
+                <span class="sidebar-btn-text">专注模式</span>
+            </button>
+            
+            <!-- 进度管理 -->
+            <div class="sidebar-section">
+                <h4 class="sidebar-section-title">进度管理</h4>
+                <button class="sidebar-btn" id="export-progress-btn" onclick="exportProgress()" title="导出进度">
+                    <span class="sidebar-btn-icon">⏏</span>
+                    <span class="sidebar-btn-text">导出进度</span>
+                </button>
+                <button class="sidebar-btn" id="import-progress-btn" onclick="importProgress()" title="导入进度">
+                    <span class="sidebar-btn-icon">⏎</span>
+                    <span class="sidebar-btn-text">导入进度</span>
+                </button>
+                <button class="sidebar-btn" id="load-progress-btn" onclick="loadProgressFile()" title="从文件加载">
+                    <span class="sidebar-btn-icon">📁</span>
+                    <span class="sidebar-btn-text">从文件加载</span>
+                </button>
+                <input type="file" id="progress-file-input" class="hidden" accept=".json">
+            </div>
+        </div>
+    </div>
+    
+    <!-- 侧边栏遮罩 -->
+    <div id="sidebar-overlay" class="sidebar-overlay hidden" onclick="closeSidebar()"></div>
+    
+    <!-- 全局提示条 -->
+    <div id="global-toast" class="global-toast hidden">
+        <span class="global-toast-icon">✓</span>
+        <span class="global-toast-text"></span>
+    </div>
+
+    <!-- 主内容区 -->
+    <main id="main-content">
+        <div class="max-w-5xl mx-auto content-wrapper">
+            <!-- 头部logo -->
+            <header class="py-4 flex items-center justify-between">
+                <a href="../../" class="flex items-center gap-2 group">
+                    <span class="text-2xl md:text-3xl font-serif font-black tracking-wider">
+                        麓鸣
+                    </span>
+                    <span class="sm:inline-block text-sm text-muted-foreground font-light">
+                        输入法
+                    </span>
+                </a>
+                <!-- 侧边栏切换按钮 -->
+                <button class="sidebar-toggle-main" id="sidebar-toggle-main" onclick="toggleSidebar()">
+                    <span>≡</span>
+                </button>
+            </header>
+            <!-- 标题区 -->
+            <div class="text-center mb-4">
+                <h1 class="text-3xl md:text-4xl font-bold mb-2">
+                    <span class="text-forest-primary">指法·字根</span>
+                    <span id="mode-title" class="text-slate-300"> 练习工具</span>
+                </h1>
+            </div>
+            
+            <!-- 标签页 -->
+            <div class="tab-container">
+                <button onclick="switchTab('finger')" id="tab-finger" class="tab-btn active pb-2 text-lg font-medium">
+                    指法练习
+                </button>
+                <button onclick="switchTab('base')" id="tab-base" class="tab-btn pb-2 text-lg font-medium text-slate-400">
+                    基础练习
+                </button>
+                <button onclick="switchTab('advanced')" id="tab-advanced" class="tab-btn pb-2 text-lg font-medium text-slate-400">
+                    进阶练习
+                </button>
+            </div>
+            
+
+            
+            <!-- 练习卡片 -->
+            <div class="practice-card rounded-2xl p-6 md:p-8">
+                <!-- 统计栏 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-sky-400" id="streak">0</div>
+                        <div class="text-sm text-slate-400 mt-1">连击</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-emerald-400" id="accuracy">0%</div>
+                        <div class="text-sm text-slate-400 mt-1">正确率</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-amber-400" id="speed">0</div>
+                        <div class="text-sm text-slate-400 mt-1">速度(字/分)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="text-3xl font-bold text-purple-400" id="score">0</div>
+                        <div class="text-sm text-slate-400 mt-1">得分</div>
+                    </div>
+                </div>
+                
+                <!-- 进度条 -->
+                <div class="progress-section">
+                    <div class="progress-info">
+                        <div class="progress-label">学习进度</div>
+                        <div class="progress-text" id="progress-text">0/0 (0%)</div>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progress-bar" class="progress-bar"></div>
+                    </div>
+                </div>
+                
+                <!-- 完成学习提示 -->
+                <div id="completion-message" class="completion-overlay hidden">
+                    <div class="completion-modal">
+                        <div class="completion-emoji">🦌</div>
+                        <h2 class="completion-title">麓鸣之旅完成！</h2>
+                        <p class="completion-message">你已成功掌握所有字根！</p>
+                        <button onclick="resetProgress()" class="btn-reset">
+                            重新开始
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- 基础练习模式 -->
+                <div id="practice-base" class="mode-content">
+
+                    <!-- 字根显示 -->
+                    <div class="char-section">
+                        <div class="char-hint" id="char-hint">请输入该字根的编码 (按空格显示提示)</div>
+                        <div class="char-display mb-6 loading" id="current-char">
+                            加载中...
+                        </div>
+                        <!-- 提示信息区域（固定位置） -->
+                        <div class="hints-container" id="hints-container">
+                            <!-- 编码提示，首次出现时显示 -->
+                            <div id="code-hint" class="code-hint">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 输入区域 -->
+                    <div class="input-section">
+                        <div class="input-row">
+                            <input type="text" id="code-input-1" 
+                                class="code-input"
+                                placeholder="" autocomplete="off" maxlength="2" autofocus>
+                            <input type="text" id="code-input-2" 
+                                class="code-input"
+                                placeholder="" autocomplete="off" maxlength="1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- 字根数据 -->
+    <script src="zigen_data_module.js"></script>
+    <script src="memory_logic.js"></script>
+    
+    <!-- 重构后的模块文件 -->
+    <script src="utils.js"></script>
+    <script src="state_manager.js"></script>
+    <script src="ui_updater.js"></script>
+    <script src="input_handler.js"></script>
+    <script src="base_practice.js"></script>
+    
+    <script>
+        // 侧边栏功能
+        let isSidebarOpen = false;
+        let isFocusMode = false;
+        
+        // 切换侧边栏显示/隐藏
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            isSidebarOpen = !isSidebarOpen;
+            
+            if (isSidebarOpen) {
+                sidebar.classList.remove('collapsed');
+                overlay.classList.remove('hidden');
+                overlay.classList.add('show');
+            } else {
+                sidebar.classList.add('collapsed');
+                overlay.classList.remove('show');
+                overlay.classList.add('hidden');
+            }
+        }
+        
+        // 关闭侧边栏
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebar-overlay');
+            
+            isSidebarOpen = false;
+            sidebar.classList.add('collapsed');
+            overlay.classList.remove('show');
+            overlay.classList.add('hidden');
+        }
+        
+        // 亮暗主题切换功能
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeIcon = document.getElementById('theme-icon');
+            
+            if (html.getAttribute('data-theme') === 'dark') {
+                html.setAttribute('data-theme', 'light');
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            }
+            
+            // 切换主题后自动折叠侧栏
+            closeSidebar();
+        }
+        
+        // 页面加载时检查主题
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                document.getElementById('theme-icon').textContent = '🌙';
+            }
+        })();
+        
+        // 专注模式切换
+        function toggleFocusMode() {
+            const body = document.body;
+            const focusBtn = document.getElementById('focus-mode-btn');
+            const focusIcon = document.getElementById('focus-mode-icon');
+            
+            isFocusMode = !isFocusMode;
+            
+            if (isFocusMode) {
+                body.classList.add('focus-mode-active');
+                focusBtn.classList.add('active');
+                focusIcon.textContent = '👁️';
+                localStorage.setItem('focusMode', 'true');
+            } else {
+                body.classList.remove('focus-mode-active');
+                focusBtn.classList.remove('active');
+                focusIcon.textContent = '👁️';
+                localStorage.setItem('focusMode', 'false');
+            }
+            
+            // 点击专注模式按钮后自动折叠侧栏
+            closeSidebar();
+        }
+        
+        // 导出进度功能
+        function exportProgress() {
+            try {
+                // 获取所有相关的进度数据
+                const progressData = {
+                    state: StateManager.getState(),
+                    memoryLogic: memoryLogic.getProgress(),
+                    timestamp: new Date().toISOString(),
+                    version: '1.0'
+                };
+                
+                // 转换为JSON字符串
+                const jsonString = JSON.stringify(progressData, null, 2);
+                const blob = new Blob([jsonString], { type: 'application/json' });
+                
+                // 创建下载链接
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `rime-zigen-progress-${new Date().toISOString().slice(0, 10)}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                // 显示成功提示条
+                showToast('进度导出成功！');
+                
+                // 导出成功后自动折叠侧栏
+                closeSidebar();
+            } catch (error) {
+                console.error('导出进度失败:', error);
+                showToast('导出进度失败，请重试。');
+            }
+        }
+        
+        // 导入进度功能
+        function importProgress() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const progressData = JSON.parse(e.target.result);
+                        
+                        // 验证数据格式
+                        if (!progressData.state || !progressData.memoryLogic) {
+                            throw new Error('无效的进度文件格式');
+                        }
+                        
+                        // 恢复状态
+                        memoryLogic.restoreProgress(progressData.memoryLogic);
+                        
+                        // 更新StateManager的当前模式和进度
+                        const currentMode = memoryLogic.currentMode;
+                        if (currentMode) {
+                            StateManager.updatePracticeMode(currentMode);
+                        } else {
+                            // 恢复StateManager的状态
+                            StateManager.updateState(progressData.state);
+                        }
+                        
+                        // 重新初始化练习
+                        BasePractice.initBasePractice();
+                        
+                        // 更新UI
+                        UIUpdater.updateStats();
+                        UIUpdater.updateProgressBar();
+                        
+                        // 显示成功提示条
+                        showToast('进度导入成功！');
+                        
+                        // 导入成功后自动折叠侧栏
+                        closeSidebar();
+                    } catch (error) {
+                        console.error('导入进度失败:', error);
+                        showToast('导入进度失败，请检查文件格式。');
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+        
+        // 从本地文件加载进度
+        function loadProgressFile() {
+            const input = document.getElementById('progress-file-input');
+            input.click();
+            
+            input.onchange = function(e) {
+                const file = e.target.files[0];
+                if (!file) return;
+                
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    try {
+                        const progressData = JSON.parse(e.target.result);
+                        
+                        // 验证数据格式
+                        if (!progressData.state || !progressData.memoryLogic) {
+                            throw new Error('无效的进度文件格式');
+                        }
+                        
+                        // 恢复状态
+                        memoryLogic.restoreProgress(progressData.memoryLogic);
+                        
+                        // 更新StateManager的当前模式和进度
+                        const currentMode = memoryLogic.currentMode;
+                        if (currentMode) {
+                            StateManager.updatePracticeMode(currentMode);
+                        } else {
+                            // 恢复StateManager的状态
+                            StateManager.updateState(progressData.state);
+                        }
+                        
+                        // 重新初始化练习
+                        BasePractice.initBasePractice();
+                        
+                        // 更新UI
+                        UIUpdater.updateStats();
+                        UIUpdater.updateProgressBar();
+                        
+                        // 显示成功提示条
+                        showToast('进度加载成功！');
+                        
+                        // 加载成功后自动折叠侧栏
+                        closeSidebar();
+                    } catch (error) {
+                        console.error('加载进度失败:', error);
+                        showToast('加载进度失败，请检查文件格式。');
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+        }
+        
+        // 页面加载时恢复专注模式状态
+        (function initFocusMode() {
+            const savedFocusMode = localStorage.getItem('focusMode');
+            if (savedFocusMode === 'true') {
+                toggleFocusMode();
+            }
+        })();
+        
+        // 显示全局提示条
+        function showToast(message) {
+            const toast = document.getElementById('global-toast');
+            const toastText = document.querySelector('.global-toast-text');
+            
+            toastText.textContent = message;
+            
+            // 显示提示条
+            toast.classList.remove('hidden');
+            toast.classList.add('show');
+            
+            // 3秒后自动隐藏
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 300);
+            }, 3000);
+        }
+        
+        // 全局函数，供HTML元素直接调用
+        function switchTab(mode) {
+            BasePractice.switchTab(mode);
+        }
+        
+        // 为侧边栏添加鼠标离开事件监听器，实现自动折叠
+        document.getElementById('sidebar').addEventListener('mouseleave', function() {
+            closeSidebar();
+        });
+        
+        // 重置进度函数
+        function resetProgress() {
+            // 隐藏完成信息
+            const completionMessage = document.getElementById('completion-message');
+            if (completionMessage) {
+                completionMessage.classList.add('hidden');
+            }
+            
+            // 重置所有状态
+            StateManager.resetState();
+            memoryLogic.reset(false);
+            
+            // 重新初始化练习
+            BasePractice.initBasePractice();
+            
+            // 更新UI
+            UIUpdater.updateStats();
+            UIUpdater.updateProgressBar();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+
+speller: # 需要在具体方案中实现
+
+chord_composer: # 需要在具体方案中实现
+
+switches:
+  - name: ascii_mode
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  # - name: simplification
+    # states: [ 汉字, 漢字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+  - name: popping
+    # states: [ 连击, 并击 ]
+    reset: 1 # 1: 并击
+  # - name: input_style
+    # states: [ 打单, 打词 ]
+    # reset: 0
+  # - name: encode
+  #   states: [ 完成, 造词 ]
+
+engine:
+  processors:
+    - ascii_composer
+    - chord_composer
+    - lua_processor@*yoyo.popping
+    - lua_processor@*yoyo.commit_raw
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - table_translator
+  filters:
+    - uniquifier
+    - simplifier
+
+translator:
+  initial_quality: 1    #该翻译器出字优先级别
+  dictionary: yoyo
+  prism: yoyo
+  enable_charset_filter: false
+  enable_encoder: false
+  enable_sentence: false
+  encode_commit_history: false
+  enable_user_dict: false
+  enable_completion: false # 编码提示 true 开启  false 关闭
+  comment_format:  #提示码自定义
+    - "xform/~//" #去掉编码提示前的~号
+    - "xform/^/ /" #提示前面 +间距
+  preedit_format:
+      - xform/\[(..)\]/$1/g
+      - xform/\((..)\)/$1/g
+      - xform/[-=_+]//g
+
+key_binder:
+  bindings:
+    - {accept: BackSpace, send_sequence: "{BackSpace}{BackSpace}", when: composing}
+    # - {accept: Control_L, send: KP_2 , when: has_menu}
+    - {accept: apostrophe, send: KP_2 , when: has_menu}  # （这里 send:2 无效了，send:KP_2 才能二选）
+    - {accept: "Shift+Tab", send: Page_Up, when: paging}
+    - {accept: Tab, send: Page_Down, when: has_menu}
+    - {accept: "Control+period", toggle: ascii_punct, when: always}
+    - {accept: "Shift+space", toggle: full_shape, when: always}
+    # - {accept: "Control+Shift+space", select: .next, when: always}
+menu:
+  page_size: 5  # 候选词个数
+  alternative_select_labels: [ ⒈, ⒉, ⒊, ⒋, ⒌, ⒍, ⒎, ⒏, ⒐, ⒑, ⒒, ⒓, ⒔, ⒕, ⒖, ⒗, ⒘, ⒙, ⒚, ⒛ ]  # 修改候选项标签
+  # alternative_select_keys: "!@#$%"  # 如编码字符占用数字键，则需另设选字键
+
+折梅: # 通用指法
+  __append:
+ # 左右手区按键的映射转换 - 将右手按键(y,u,i,o,p等)镜像到对应的左手按键(t,r,e,w,q等)
+    - xform|6|5|g
+    - xform|7|4|g
+    - xform|8|3|g
+    - xform|9|2|g
+    - xform|0|1|g
+    - xform|y|t|g
+    - xform|u|r|g
+    - xform|i|e|g
+    - xform|o|w|g
+    - xform|p|q|g
+    - xform|h|g|g
+    - xform|j|f|g
+    - xform|k|d|g
+    - xform|l|s|g
+    - xform|;|a|g
+    - xform|n|b|g
+    - xform|m|v|g
+    - xform|,|c|g
+    - xform|\.|x|g
+    - xform|/|z|g
+ # 以下是对各个码元的按键映射（指法）：
+  # 第零行码元（基于12345）：
+    - xform|14|0|g
+    - xform|41|0|g
+    - xform|12|9|g
+    - xform|21|9|g
+    - xform|34|8|g
+    - xform|43|8|g
+    - xform|24|7|g
+    - xform|42|7|g
+    - xform|45|6|g
+    - xform|54|6|g
+  # 第一行码元（基于qwert）：
+    - xform|rq|p|g
+    - xform|qr|p|g
+    - xform|wq|o|g
+    - xform|qw|o|g
+    - xform|re|i|g
+    - xform|er|i|g
+    - xform|rw|u|g
+    - xform|wr|u|g
+    - xform|tr|y|g
+    - xform|rt|y|g
+    - xform|4q|Q|g
+    - xform|q4|Q|g
+    - xform|4w|W|g
+    - xform|w4|W|g
+    - xform|we|E|g
+    - xform|ew|E|g
+    - xform|2r|R|g
+    - xform|r2|R|g
+    - xform|3t|T|g
+    - xform|t3|T|g
+    - xform|3q|P|g
+    - xform|q3|P|g
+    - xform|3w|O|g
+    - xform|w3|O|g
+    - xform|eq|I|g
+    - xform|qe|I|g
+    - xform|3r|U|g
+    - xform|r3|U|g
+    - xform|4t|Y|g
+    - xform|t4|Y|g
+  # 第二行码元（基于asdfg）：
+    - xform|fa|;|g
+    - xform|af|;|g
+    - xform|sa|l|g
+    - xform|as|l|g
+    - xform|df|k|g
+    - xform|fd|k|g
+    - xform|fs|j|g
+    - xform|sf|j|g
+    - xform|gf|h|g
+    - xform|fg|h|g
+    - xform|ra|A|g
+    - xform|ar|A|g
+    - xform|rs|S|g
+    - xform|sr|S|g
+    - xform|ds|D|g
+    - xform|sd|D|g
+    - xform|fw|F|g
+    - xform|wf|F|g
+    - xform|ge|G|g
+    - xform|eg|G|g
+    - xform|ea|:|g
+    - xform|ae|:|g
+    - xform|es|L|g
+    - xform|se|L|g
+    - xform|da|K|g
+    - xform|ad|K|g
+    - xform|fe|J|g
+    - xform|ef|J|g
+    - xform|gr|H|g
+    - xform|rg|H|g
+  # 第三行码元（基于zxcvb）：
+    - xform|vz|/|g
+    - xform|zv|/|g
+    - xform|xz|.|g
+    - xform|zx|.|g
+    - xform|vc|,|g
+    - xform|cv|,|g
+    - xform|vx|m|g
+    - xform|xv|m|g
+    - xform|bv|n|g
+    - xform|vb|n|g
+    - xform|fz|Z|g
+    - xform|zf|Z|g
+    - xform|fx|X|g
+    - xform|xf|X|g
+    - xform|cx|C|g
+    - xform|xc|C|g
+    - xform|vs|V|g
+    - xform|sv|V|g
+    - xform|bd|B|g
+    - xform|db|B|g
+    - xform|dz|?|g
+    - xform|zd|?|g
+    - xform|dx|>|g
+    - xform|xd|>|g
+    - xform|cz|<|g
+    - xform|zc|<|g
+    - xform|vd|M|g
+    - xform|dv|M|g
+    - xform|bf|N|g
+    - xform|fb|N|g
+
+    - xform|'||g  # 清除所有的单引号

@@ -1,0 +1,1601 @@
+mapping:
+  一:
+    code: fi
+  丨:
+    code: cs
+  丿:
+    code: tp
+  丶:
+    code: Od
+  乛:
+    code: Ae
+  乙:
+    code: ji
+  戊:
+    code: ;u
+    name: 戊
+  生:
+    code: Gs
+    name: 生
+  布:
+    code: Ab
+    name: 布
+  豸:
+    code: Ki
+    name: 豸，示例“貌、豺”
+  毛:
+    code: ym
+    name: 毛
+  可:
+    code: xk
+    name: 可
+  水:
+    code: ns
+    name: 水
+  言:
+    code: uy
+    name: 言
+  至:
+    code: .i
+    name: 至
+  丈:
+    code: gz
+    name: 丈
+  西:
+    code: tx
+    name: 西
+  执:
+    code: rz
+    name: 执
+  方:
+    code: <f
+    name: 方
+  也:
+    code: zy
+    name: 也
+  廴:
+    code: gy
+    name: 廴
+  戈:
+    code: Ug
+    name: 戈
+  者:
+    code: qz
+    name: 者
+  氏:
+    code: Zs
+    name: 氏
+  高:
+    code: sg
+    name: 高
+  而:
+    code: Be
+    name: 而，示例“耍、需”
+  辰:
+    code: <c
+    name: 辰
+  五:
+    code: Nu
+    name: 五
+  十:
+    code: es
+    name: 十
+  八:
+    code: Xb
+    name: 八
+  聿:
+    code: lv
+    name: 聿
+  之:
+    code: Li
+    name: 之
+  未:
+    code: zw
+    name: 未
+  目:
+    code: Tm
+    name: 目
+  大:
+    code: Td
+    name: 大
+  羽:
+    code: Kv
+    name: 羽
+  齐:
+    code: cq
+    name: 齐
+  载:
+    code: Lz
+    name: 载
+  :
+    code: qx
+    name: 向字框，示例“向、奥”
+  见:
+    code: ej
+    name: 见
+  入:
+    code: Vu
+    name: 入，示例“汆、肏”
+  糸:
+    code: Rs
+    name: 糸
+  片:
+    code: Op
+    name: 片
+  鬲:
+    code: '>g'
+    name: 鬲
+  巳:
+    code: Ps
+    name: 巳
+  歹:
+    code: Jd
+    name: 歹
+  日:
+    code: wr
+    name: 日
+  虎:
+    code: Oh
+    name: 虎
+  厂:
+    code: yc
+    name: 厂
+  火:
+    code: ;h
+    name: 火
+  亦:
+    code: Gi
+    name: 亦
+  口:
+    code: bk
+    name: 口
+  飞:
+    code: kf
+    name: 飞
+  干:
+    code: ?g
+    name: 干
+  卅:
+    code: hc
+    name: 卅
+  劳:
+    code: Kl
+    name: 劳
+  亍:
+    code: gu
+    name: 亍
+  合:
+    code: kh
+    name: 合，示例“拿、答、哈”
+  已:
+    code: Pi
+    name: 已
+  谷:
+    code: Lg
+    name: 谷
+  祭:
+    code: Ij
+    name: 祭，示例“察”
+  次:
+    code: Ec
+    name: 次
+  里:
+    code: Pl
+    name: 里
+  鹿:
+    code: Al
+    name: 鹿
+  爱:
+    code: Ai
+    name: 爱
+  亡:
+    code: uw
+    name: 亡，示例“忙、忘”
+  竹:
+    code: cu
+    name: 竹
+  文:
+    code: vw
+    name: 文
+  云:
+    code: Ny
+    name: 云
+  攵:
+    code: ap
+    name: 攵
+  车:
+    code: Mc
+    name: 车
+  面:
+    code: cm
+    name: 面
+  耒:
+    code: ',l'
+    name: 耒
+  臣:
+    code: Kc
+    name: 臣
+  气:
+    code: Dq
+    name: 气
+  弓:
+    code: Pg
+    name: 弓
+  母:
+    code: Nm
+    name: 母
+  且:
+    code: qq
+    name: 且
+  乍:
+    code: Ha
+    name: 乍
+  广:
+    code: Jg
+    name: 广
+  矢:
+    code: Ds
+    name: 矢
+  :
+    code: Ek
+    name: 壳无几，示例“壹、壶”
+  麻:
+    code: hm
+    name: 麻，示例“魔、摩”
+  金:
+    code: zj
+    name: 金
+  斤:
+    code: /j
+    name: 斤
+  巾:
+    code: Qj
+    name: 巾，示例“制、帐”
+  欠:
+    code: :q
+    name: 欠
+  木:
+    code: om
+    name: 木
+  丩:
+    code: Wj
+    name: 丩，示例“叫、收”
+  丬:
+    code: ?p
+    name: 丬
+  甘:
+    code: og
+    name: 甘，示例“某”
+  彡:
+    code: Is
+    name: 彡，示例“杉、彭”
+  电:
+    code: Ud
+    name: 电
+  双:
+    code: ms
+    name: 双
+  齿:
+    code: Dc
+    name: 齿
+  黄:
+    code: Rh
+    name: 黄
+  子:
+    code: Fi
+    name: 子
+  父:
+    code: hf
+    name: 父
+  止:
+    code: Ii
+    name: 止
+  川:
+    code: Yc
+    name: 川，示例“州、氚”
+  刀:
+    code: ud
+    name: 刀
+  雨:
+    code: kv
+    name: 雨
+  冫:
+    code: Sb
+    name: 冫，示例“凉、凌”
+  亥:
+    code: Lh
+    name: 亥
+  疋:
+    code: Cs
+    name: 疋
+  丁:
+    code: Gd
+    name: 丁
+  白:
+    code: db
+    name: 白
+  门:
+    code: Im
+    name: 门
+  廿:
+    code: Rn
+    name: 廿，示例“燕”
+  宀:
+    code: jb
+    name: 宀
+  米:
+    code: rm
+    name: 米
+  力:
+    code: <l
+    name: 力
+  卜:
+    code: xb
+    name: 卜，示例“处、补”
+  穴:
+    code: Ix
+    name: 穴
+  古:
+    code: /g
+    name: 古
+  艹:
+    code: pc
+    name: 艹
+  占:
+    code: Uz
+    name: 占
+  六:
+    code: wl
+    name: 六
+  直:
+    code: Az
+    name: 直
+  㐄:
+    code: rk
+    name: 㐄，示例“降、桀”
+  彐:
+    code: Cj
+    name: 彐，示例“扫、帚”
+  人:
+    code: rr
+    name: 人
+  马:
+    code: /m
+    name: 马
+  衣:
+    code: ?i
+    name: 衣
+  四:
+    code: Os
+    name: 四
+  卩:
+    code: Yj
+    name: 卩，示例“节、卫、叩”
+  弋:
+    code: Ui
+    name: 弋
+  工:
+    code: Sg
+    name: 工
+  黑:
+    code: eh
+    name: 黑
+  页:
+    code: ?y
+    name: 页
+  夫:
+    code: df
+    name: 夫
+  千:
+    code: kq
+    name: 千，示例“垂、乖”
+  业:
+    code: /y
+    name: 业
+  炎:
+    code: My
+    name: 炎
+  三:
+    code: ds
+    name: 三
+  厶:
+    code: Bs
+    name: 厶，示例“去、矣”
+  酋:
+    code: ',q'
+    name: 酋
+  羊:
+    code: Qy
+    name: 羊
+  瓦:
+    code: kw
+    name: 瓦
+  七:
+    code: tq
+    name: 七
+  示:
+    code: Ns
+    name: 示
+  夕:
+    code: Sx
+    name: 夕
+  心:
+    code: :x
+    name: 心
+  耳:
+    code: Fe
+    name: 耳
+  犬:
+    code: Kq
+    name: 犬
+  甲:
+    code: Oj
+    name: 甲
+  辟:
+    code: Wb
+    name: 辟，示例“避、臂”
+  禾:
+    code: xh
+    name: 禾
+  自:
+    code: gi
+    name: 自
+  骨:
+    code: qg
+    name: 骨
+  同:
+    code: Ft
+    name: 同
+  艮:
+    code: ;g
+    name: 艮
+  井:
+    code: hj
+    name: 井
+  及:
+    code: sj
+    name: 及
+  士:
+    code: rs
+    name: 士
+  乂:
+    code: li
+    name: 乂，示例“希、区”
+  兔:
+    code: At
+    name: 兔
+  辛:
+    code: <x
+    name: 辛
+  贝:
+    code: Gb
+    name: 贝
+  习:
+    code: yx
+    name: 习
+  今:
+    code: kj
+    name: 今
+  屮:
+    code: Yc
+    name: 屮，示例“出”
+  壬:
+    code: Nr
+    name: 壬
+  土:
+    code: Vt
+    name: 土
+  又:
+    code: vy
+    name: 又
+  音:
+    code: Sy
+    name: 音
+  足:
+    code: su
+    name: 足
+  身:
+    code: Is
+    name: 身
+  由:
+    code: By
+    name: 由
+  户:
+    code: Qh
+    name: 户
+  月:
+    code: Hy
+    name: 月
+  吅:
+    code: mq
+    name: 吅，示例“器、骂”
+  巴:
+    code: Tb
+    name: 巴
+  王:
+    code: ',w'
+    name: 王
+  鱼:
+    code: Lv
+    name: 鱼
+  虫:
+    code: Bc
+    name: 虫
+  尚:
+    code: Ms
+    name: 尚
+  舟:
+    code: Wo
+    name: 舟
+  皿:
+    code: ;m
+    name: 皿
+  本:
+    code: nb
+    name: 本
+  勹:
+    code: .k
+    name: 勹，示例“勾、勿”
+  爪:
+    code: :a
+    name: 爪，示例“爬、抓”
+  仑:
+    code: Sl
+    name: 仑
+  落:
+    code: /l
+    name: 落
+  女:
+    code: Zn
+    name: 女
+  丰:
+    code: '>f'
+    name: 丰
+  行:
+    code: gx
+    name: 行，示例“衍、衡”
+  豆:
+    code: '>d'
+    name: 豆
+  牙:
+    code: Py
+    name: 牙
+  了:
+    code: sl
+    name: 了
+  非:
+    code: tf
+    name: 非
+  无:
+    code: zu
+    name: 无
+  象:
+    code: ',x'
+    name: 象
+  石:
+    code: .s
+    name: 石
+  角:
+    code: Lj
+    name: 角
+  二:
+    code: Ee
+    name: 二
+  毋:
+    code: Iu
+    name: 毋
+  冖:
+    code: Ct
+    name: 冖
+  鼠:
+    code: As
+    name: 鼠
+  毌:
+    code: Ig
+    name: 毌，示例“贯”
+  句:
+    code: Gj
+    name: 句
+  册:
+    code: Fc
+    name: 册
+  鬼:
+    code: Gg
+    name: 鬼
+  食:
+    code: fs
+    name: 食
+  民:
+    code: wm
+    name: 民
+  予:
+    code: '>v'
+    name: 予
+  内:
+    code: Bn
+    name: 内
+  林:
+    code: ml
+    name: 林
+  圭:
+    code: Mg
+    name: 圭
+  隹:
+    code: ',i'
+    name: 隹，示例“推、催、鹤”
+  关:
+    code: Rg
+    name: 关
+  皮:
+    code: Hp
+    name: 皮
+  各:
+    code: Yg
+    name: 各
+  彳:
+    code: gc
+    name: 彳
+  尸:
+    code: ys
+    name: 尸
+  寸:
+    code: zc
+    name: 寸
+  束:
+    code: Cs
+    name: 束
+  龙:
+    code: Ul
+    name: 龙
+  甫:
+    code: Lf
+    name: 甫
+  光:
+    code: xg
+    name: 光
+  亻:
+    code: ar
+    name: 亻
+  弗:
+    code: Pf
+    name: 弗
+  牛:
+    code: mn
+    name: 牛
+  九:
+    code: Aj
+    name: 九
+  韦:
+    code: Dw
+    name: 韦
+  儿:
+    code: Je
+    name: 儿
+  殳:
+    code: Ts
+    name: 殳
+  曰:
+    code: wy
+    name: 曰
+  夂:
+    code: /i
+    name: 夂
+  壴:
+    code: Ju
+    name: 壴，示例“喜、鼓”
+  尤:
+    code: :y
+    name: 尤
+  支:
+    code: ;i
+    name: 支
+  :
+    code: hs
+    name: 商字头，示例“商、摘”
+  长:
+    code: uc
+    name: 长
+  乡:
+    code: ex
+    name: 乡
+  山:
+    code: <s
+    name: 山
+  手:
+    code: io
+    name: 手
+  用:
+    code: qy
+    name: 用
+  㡀:
+    code: lb
+    name: 㡀
+  幺:
+    code: '>y'
+    name: 幺
+  斗:
+    code: Dd
+    name: 斗
+  田:
+    code: Dt
+    name: 田
+  疒:
+    code: lb
+    name: 疒
+  匕:
+    code: hb
+    name: 匕
+  缶:
+    code: Ef
+    name: 缶
+  从:
+    code: mc
+    name: 从
+  曲:
+    code: Fq
+    name: 曲，示例“蛐、曹”
+  豕:
+    code: Qs
+    name: 豕
+  乃:
+    code: Tn
+    name: 乃，示例“盈、仍”
+  䀠:
+    code: Mm
+    name: 䀠，示例“瞿、𪄊”
+  革:
+    code: Ag
+    name: 革
+  刂:
+    code: Wd
+    name: 刂
+  亠:
+    code: Zt
+    name: 亠
+  囗:
+    code: Uk
+    name: 囗
+  :
+    code: Kt
+    name: 卧人，示例“每、午”
+  鸟:
+    code: Xn
+    name: 鸟
+  立:
+    code: Cl
+    name: 立
+  乌:
+    code: Xu
+    name: 乌
+  己:
+    code: Pj
+    name: 己
+  其:
+    code: dq
+    name: 其
+  臼:
+    code: ?j
+    name: 臼
+  小:
+    code: Ex
+    name: 小
+  分:
+    code: af
+    name: 分
+  龟:
+    code: cg
+    name: 龟
+  舌:
+    code: gs
+    name: 舌
+  辶:
+    code: pc
+    name: 辶
+  吉:
+    code: Jj
+    name: 吉
+  不:
+    code: cb
+    name: 不
+  几:
+    code: qj
+    name: 几，示例“朵、风”
+  走:
+    code: dz
+    name: 走
+  卯:
+    code: :m
+    name: 卯，示例“聊、卿”
+  卵:
+    code: :l
+    name: 卵
+  两:
+    code: Yl
+    name: 两
+  酉:
+    code: Uy
+    name: 酉
+  䒤:
+    code: Pm
+    name: 莫无大，示例“草、葛”
+  矛:
+    code: '>m'
+    name: 矛
+  瓜:
+    code: <g
+    name: 瓜
+grouping:
+  :
+    is_sub_of: 川
+    name: 横着三个点，示例“州”
+  󰇺:
+    is_sub_of: 从
+    name: 横着两个人，示例“坐”
+  :
+    is_sub_of: 鸟
+    name: 鳥（繁体鸟）无灬
+  釒:
+    is_sub_of: 金
+    name: 釒
+  :
+    is_sub_of: 其
+    name: 其字头
+  :
+    is_sub_of: 册
+    name: 典字头
+  :
+    is_sub_of: 尚
+    name: 学无子，示例“觉”
+  忄:
+    is_sub_of: 心
+    name: 忄
+  :
+    is_sub_of: 车
+    name: 车旁
+  :
+    is_sub_of: 止
+    name: 止，示例“步、址”
+  :
+    is_sub_of: 丬
+    name: 北字旁，示例“乘、燕”
+  :
+    is_sub_of: 聿
+    name: 聿无二
+  彑:
+    is_sub_of: 彐
+    name: 彑，示例“互、缘”
+  :
+    is_sub_of: 电
+    name: 龟字底，示例“電”
+  :
+    is_sub_of: 用
+    name: 甬字底，示例“通、庸”
+  :
+    is_sub_of: 米
+    name: 鬯字头无凵
+  龵:
+    is_sub_of: 手
+    name: 龵，示例“看”
+  :
+    is_sub_of: 日
+    name: 冒字头，示例“帽、𠕤”
+  :
+    is_sub_of: 止
+    name: 步字底
+  :
+    is_sub_of: 亦
+    name: 变字头无亠
+  :
+    is_sub_of: 同
+    name: 周字框
+  钅:
+    is_sub_of: 金
+    name: 钅
+  犭:
+    is_sub_of: 犬
+    name: 犭
+  :
+    is_sub_of: 刂
+    name: 乔字底，示例“介、养”
+  氵:
+    is_sub_of: 水
+    name: 氵
+  :
+    is_sub_of: 卩
+    name: 姊字边
+  :
+    is_sub_of: 丰
+    name: 春字头
+  爿:
+    is_sub_of: 丬
+    name: 爿
+  :
+    is_sub_of: 止
+    name: 延字心无丿
+  車:
+    is_sub_of: 车
+    name: 車
+  匚:
+    is_sub_of: 丩
+    name: 匚，示例“区、匪”
+  :
+    is_sub_of: 井
+    name: 寒字腰无一
+  :
+    is_sub_of: 舌
+    name: 舍字底
+  :
+    is_sub_of: 尸
+    name: 眉字框，示例“眉、声”
+  :
+    is_sub_of: 云
+    name: 充字头
+  :
+    is_sub_of: 八
+    name: 横着三个点，示例“办”
+  :
+    is_sub_of: 刀
+    name: 黎右角
+  :
+    is_sub_of: 鸟
+    name: 鸟无一，示例“岛”
+  :
+    is_sub_of: 小
+    name: 练字边无七，示例“拣、炼”
+  :
+    is_sub_of: 心
+    name: 恭字底，示例“添、恭”
+  :
+    is_sub_of: 彳
+    name: 微字框（微无几）
+  :
+    is_sub_of: 圭
+    name: 两个士，示例“壵”
+  :
+    is_sub_of: 吉
+    name: 周字心
+  覀:
+    is_sub_of: 西
+    name: 覀，示例“票、栗”
+  礻:
+    is_sub_of: 示
+    name: 礻
+  尢:
+    is_sub_of: 艹
+    name: 尢，示例“尴、尬”
+  :
+    is_sub_of: 人
+    name: 会字头
+  :
+    is_sub_of: 䀠
+    name: 瞿字头，示例“灈、㬬”
+  無:
+    is_sub_of: 无
+    name: 無
+  :
+    is_sub_of: 页
+    name: 㥑字头
+  罒:
+    is_sub_of: 四
+    name: 罒
+  扌:
+    is_sub_of: 手
+    name: 扌
+  :
+    is_sub_of: 彳
+    name: 赢字框，示例“嬴、羸”
+  仌:
+    is_sub_of: 从
+    name: 仌
+  牜:
+    is_sub_of: 牛
+    name: 牛旁
+  :
+    is_sub_of: 页
+    name: 寡字腰
+  鳥:
+    is_sub_of: 鸟
+    name: 鳥
+  :
+    is_sub_of: 谷
+    name: 谷字头
+  :
+    is_sub_of: 㐄
+    name: 年字底，示例“年”
+  :
+    is_sub_of: 爱
+    name: 爱字头
+  巜:
+    is_sub_of: 川
+    name: 巜，示例“粼”
+  :
+    is_sub_of: 疋
+    name: 延字心
+  :
+    is_sub_of: 羊
+    name: 差字头，示例“着”
+  :
+    is_sub_of: 火
+    name: 业无一
+  :
+    is_sub_of: 禾
+    name: 余字底
+  :
+    is_sub_of: 禾
+    name: 禾框，示例“乘、秉”
+  :
+    is_sub_of: 竹
+    name: 𥫗
+  :
+    is_sub_of: 川
+    name: 荒字底
+  :
+    is_sub_of: 水
+    name: 永无丶
+  :
+    is_sub_of: 歹
+    name: 歺字头，示例“睿”
+  歺:
+    is_sub_of: 歹
+    name: 歺
+  :
+    is_sub_of: 儿
+    name: 见字底，示例“沈”
+  魚:
+    is_sub_of: 鱼
+    name: 魚（繁体魚）
+  :
+    is_sub_of: 载
+    name: 载字框，示例“截、裁”
+  :
+    is_sub_of: 手
+    name: 夫无㇏，示例“那”
+  :
+    is_sub_of: 角
+    name: 负字头，示例“负”
+  戶:
+    is_sub_of: 户
+    name: 戶，示例“所”
+  禸:
+    is_sub_of: 内
+    name: 禸，示例“离”
+  :
+    is_sub_of: 戊
+    name: 臧字框，示例“藏”
+  纟:
+    is_sub_of: 糸
+    name: 纟
+  :
+    is_sub_of: 冫
+    name: 冬字底
+  糹:
+    is_sub_of: 糸
+    name: 糹（繁体丝旁）
+  :
+    is_sub_of: 乌
+    name: 乌无一
+  :
+    is_sub_of: 几
+    name: 风字框
+  :
+    is_sub_of: 卅
+    name: 带字头
+  炏:
+    is_sub_of: 炎
+    name: 炏
+  :
+    is_sub_of: 目
+    name: 具字头
+  :
+    is_sub_of: 同
+    name: 凹无一
+  :
+    is_sub_of: 疋
+    name: 疏字旁
+  :
+    is_sub_of: 冫
+    name: 飞无折，示例“率”
+  旡:
+    is_sub_of: 无
+    name: 旡，示例“既”
+  冂:
+    is_sub_of: 同
+    name: 冂（同字框）
+  戉:
+    is_sub_of: 戊
+    name: 戉，示例“越”
+  :
+    is_sub_of: 衣
+    name: 衣字底
+  :
+    is_sub_of: 羊
+    name: 美字头
+  :
+    is_sub_of: 彐
+    name: 虐字底
+  :
+    is_sub_of: 屮
+    name: 屯无一
+  :
+    is_sub_of: 鼠
+    name: 鼠字底
+  :
+    is_sub_of: 月
+    name: 夜下角
+  :
+    is_sub_of: 立
+    name: 立无横，示例“产、豙”
+  :
+    is_sub_of: 丩
+    name: 候右角
+  :
+    is_sub_of: 匕
+    name: 以字旁，示例“以、拟”
+  :
+    is_sub_of: 十
+    name: 左字框
+  :
+    is_sub_of: 手
+    name: 举字底，示例“半、奉”
+  :
+    is_sub_of: 黑
+    name: 曾字头无丷
+  :
+    is_sub_of: 聿
+    name: 争字底
+  :
+    is_sub_of: 
+    name: 囊字头
+  :
+    is_sub_of: 马
+    name: 馬无灬
+  :
+    is_sub_of: 缶
+    name: 卸字旁
+  :
+    is_sub_of: 丈
+    name: 丈框不出头，示例“更”
+  :
+    is_sub_of: 水
+    name: 学字头，示例“觉、学”
+  龷:
+    is_sub_of: 廿
+    name: 龷
+  氺:
+    is_sub_of: 水
+    name: 氺
+  :
+    is_sub_of: 聿
+    name: 妻字头无一
+  髟:
+    is_sub_of: 长
+    name: 髟
+  韋:
+    is_sub_of: 韦
+    name: 韋（繁体韦）
+  䒑:
+    is_sub_of: 八
+    name: 䒑，示例“逆、兹”
+  :
+    is_sub_of: 丈
+    name: 丈框，示例“使、吏”
+  :
+    is_sub_of: 虎
+    name: 虎无七无几
+  :
+    is_sub_of: 彡
+    name: 横着两个丿，示例“勿”
+  :
+    is_sub_of: 屮
+    name: 发二，示例“发”
+  :
+    is_sub_of: 弗
+    name: 弟字底
+  㔾:
+    is_sub_of: 卩
+    name: 㔾
+  㕛:
+    is_sub_of: 双
+    name: 㕛
+  癶:
+    is_sub_of: 祭
+    name: 癶，示例“登”
+  :
+    is_sub_of: 丬
+    name: 鼎右角
+  亾:
+    is_sub_of: 亡
+    name: 亾或兦
+  :
+    is_sub_of: 鹿
+    name: 鹿字框
+  :
+    is_sub_of: 竹
+    name: 临右角
+  :
+    is_sub_of: 刀
+    name: 万无横，示例“万、敖”
+  卝:
+    is_sub_of: 艹
+    name: 卝，示例“芈”
+  :
+    is_sub_of: 鹿
+    name: 鹿旁，示例“麒、麟”
+  :
+    is_sub_of: 七
+    name: 东二，示例“东、练”
+  :
+    is_sub_of: 又
+    name: 经右角
+  :
+    is_sub_of: 册
+    name: 扁字心
+  :
+    is_sub_of: 羊
+    name: 南字心，示例“南、幸”
+  :
+    is_sub_of: 疋
+    name: 定字底
+  朩:
+    is_sub_of: 木
+    name: 朩，示例“条、杂”
+  :
+    is_sub_of: 臣
+    name: 颐字旁，示例“熙、姬”
+  龶:
+    is_sub_of: 丰
+    name: 龶，示例“毒”
+  :
+    is_sub_of: 内
+    name: 禺字底，示例“遇”
+  :
+    is_sub_of: 匕
+    name: 比字旁
+  :
+    is_sub_of: 祭
+    name: 祭字头
+  卌:
+    is_sub_of: 卅
+    name: 卌，示例“舞”
+  龸:
+    is_sub_of: 尚
+    name: 龸，示例“尝”
+  衤:
+    is_sub_of: 衣
+    name: 衤
+  饣:
+    is_sub_of: 食
+    name: 饣
+  :
+    is_sub_of: 高
+    name: 亮字头，示例”亭、毫“
+  烏:
+    is_sub_of: 乌
+    name: 烏（繁体鸟）
+  :
+    is_sub_of: 足
+    name: 𧾷
+  :
+    is_sub_of: 角
+    name: 久无㇏
+  镸:
+    is_sub_of: 长
+    name: 镸
+  耂:
+    is_sub_of: 者
+    name: 耂，示例“老”
+  :
+    is_sub_of: 高
+    name: 高字头，示例“京”
+  :
+    is_sub_of: 王
+    name: 噩字框
+  :
+    is_sub_of: 牛
+    name: 告字头，示例“靠、浩”
+  :
+    is_sub_of: 尚
+    name: 尚头，示例“党、常”
+  :
+    is_sub_of: 戈
+    name: 戈无丶，示例“尧”
+  :
+    is_sub_of: 高
+    name: 高头
+  :
+    is_sub_of: 丩
+    name: 乐二，示例“乐”
+  :
+    is_sub_of: 亦
+    name: 变字头，示例“栾、奕”
+  :
+    is_sub_of: 页
+    name: 夏字头
+  :
+    is_sub_of: 大
+    name: 大
+  肀:
+    is_sub_of: 聿
+    name: 肀
+  :
+    is_sub_of: 丬
+    name: 鼎左角
+  :
+    is_sub_of: 豕
+    name: 豕无一
+  :
+    is_sub_of: 乃
+    name: 凸无一，示例“凸”
+  廾:
+    is_sub_of: 艹
+    name: 廾，示例“升、并”
+  攴:
+    is_sub_of: 攵
+    name: 攴，示例“敲”
+  阝:
+    is_sub_of: 卩
+    name: 阝
+  凵:
+    is_sub_of: 同
+    name: 凵，示例“函、画”
+  :
+    is_sub_of: 丩
+    name: 卬字旁，示例“迎、印”
+  :
+    is_sub_of: 
+    name: 彀左角
+  丌:
+    is_sub_of: 艹
+    name: 丌，示例“鼻”
+  讠:
+    is_sub_of: 言
+    name: 讠
+  :
+    is_sub_of: 电
+    name: 曳无丿，示例“曳、拽”
+  :
+    is_sub_of: 土
+    name: 里无日
+  :
+    is_sub_of: 落
+    name: 落字框
+  :
+    is_sub_of: 亦
+    name: 亦字底，示例“赤”
+  㐅:
+    is_sub_of: 乂
+    name: 㐅，示例“気、风”
+  :
+    is_sub_of: 
+    name: 帝字头，示例“旁”
+  :
+    is_sub_of: 水
+    name: 益字头
+  龺:
+    is_sub_of: 直
+    name: 龺，示例“韩、朝”
+  :
+    is_sub_of: 聿
+    name: 事字底
+  龹:
+    is_sub_of: 关
+    name: 龹，示例“卷、拳”
+  :
+    is_sub_of: 火
+    name: 兼无䒑无彐
+  :
+    is_sub_of: 木
+    name: 木框，示例“來”
+  爫:
+    is_sub_of: 爪
+    name: 爫
+  :
+    is_sub_of: 小
+    name: 尚字头，示例“当、肖”
+  :
+    is_sub_of: 匕
+    name: 化字边
+  :
+    is_sub_of: 鼠
+    name: 巤字底，示例“巤”
+  夊:
+    is_sub_of: 夂
+    name: 夊
+  齒:
+    is_sub_of: 齿
+    name: 齒
+  :
+    is_sub_of: 
+    name: 索字头，示例“脖、勃”
+  :
+    is_sub_of: 月
+    name: 丽下角
+  :
+    is_sub_of: 卜
+    name: 卢字头，示例“占、上”
+  兦:
+    is_sub_of: 亡
+    name: 兦或亾，示例“喝、葛”
+  :
+    is_sub_of: 同
+    name: 见字头
+  :
+    is_sub_of: 丰
+    name: 寿字头
+  :
+    is_sub_of: 艮
+    name: 即字旁，示例“既、卿”
+  :
+    is_sub_of: 刂
+    name: 临字旁
+  :
+    is_sub_of: 衣
+    name: 衣框，示例“哀、衷”
+  𡈼:
+    is_sub_of: 壬
+    name: 𡈼，示例“丢”
+  :
+    is_sub_of: 厂
+    name: 反字框，示例“后、派”
+  侖:
+    is_sub_of: 仑
+    name: 侖（繁体仑）
+  :
+    is_sub_of: 厶
+    name: 虫无口
+  龴:
+    is_sub_of: 厶
+    name: 龴，示例“令、甬”
+  㠯:
+    is_sub_of: 吅
+    name: 㠯
+  :
+    is_sub_of: 卯
+    name: 留字头
+  :
+    is_sub_of: 月
+    name: 青字底
+  :
+    is_sub_of: 日
+    name: 临下角，示例“临、𫝝”
+  :
+    is_sub_of: 黑
+    name: 黑五
+  :
+    is_sub_of: 兔
+    name: 兔字头
+  :
+    is_sub_of: 八
+    name: 共字底，示例“兴、典”
+  :
+    is_sub_of: 劳
+    name: 劳字头，示例“荣、荧”
+  亽:
+    is_sub_of: 今
+    name: 亽
+  長:
+    is_sub_of: 长
+    name: 長
+  亼:
+    is_sub_of: 合
+    name: 亼
+  虍:
+    is_sub_of: 虎
+    name: 虍，示例“虑、虐”
+  :
+    is_sub_of: 衣
+    name: 旅下角，示例“旅、派”
+  龰:
+    is_sub_of: 止
+    name: 龰
+  :
+    is_sub_of: 力
+    name: 为字框
+  馬:
+    is_sub_of: 马
+    name: 馬
+  :
+    is_sub_of: 黄
+    name: 寅字底，示例“寅、演”
+  鬥:
+    is_sub_of: 斗
+    name: 鬥（繁体斗）
+  :
+    is_sub_of: 水
+    name: 乑无丿
+  :
+    is_sub_of: 月
+    name: 然左角
+  :
+    is_sub_of: 手
+    name: 段字旁无横
+  :
+    is_sub_of: 卩
+    name: 节字底
+  巛:
+    is_sub_of: 川
+    name: 巛
+  飠:
+    is_sub_of: 食
+    name: 飠（繁体饣）
+  丷:
+    is_sub_of: 八
+    name: 丷
+  艸:
+    is_sub_of: 艹
+    name: 艸
+  󲰪:
+    is_sub_of: 劳
+    name: 艹加宀，示例“蓉、莞”
+  :
+    is_sub_of: 小
+    name: 少无丿，示例“省”
+  :
+    is_sub_of: 彐
+    name: 录字头，示例“录”
+  :
+    is_sub_of: 斤
+    name: 丘无横，示例“兵、岳”
+  :
+    is_sub_of: 井
+    name: 寒字腰，示例“襄”
+  灬:
+    is_sub_of: 火
+    name: 灬
+  :
+    is_sub_of: 辛
+    name: 辛旁，示例“辣、辨”
+  :
+    is_sub_of: 衣
+    name: 畏字底，示例“畏、丧”
+  :
+    is_sub_of: 虫
+    name: 贵字头，示例“贵”
+  :
+    is_sub_of: 臼
+    name: 臼裂
+  :
+    is_sub_of: 十
+    name: 于无一
+  䶹:
+    is_sub_of: 屮
+    name: 䶹
+  :
+    is_sub_of: 金
+    name: 金字底
+  :
+    is_sub_of: 圭
+    name: 横着两个土，示例“垚”
+  :
+    is_sub_of: 丩
+    name: 叚右角
+  㐆:
+    is_sub_of: 身
+    name: 㐆，示例“殷”
+  :
+    is_sub_of: 雨
+    name: 雨头
+  :
+    is_sub_of: 水
+    name: 鳏下角
+  :
+    is_sub_of: 彳
+    name: 微无彳无几
+  :
+    is_sub_of: 角
+    name: 尔字头，示例”你“
+  :
+    is_sub_of: 刂
+    name: 班字心
+  :
+    is_sub_of: 刂
+    name: 师字旁
+  :
+    is_sub_of: 尸
+    name: 叚字旁无二，示例“假、遐”
+  冎:
+    is_sub_of: 骨
+    name: 冎
+  :
+    is_sub_of: 从
+    name: 横着两个入

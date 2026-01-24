@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麓鸣·字根表</title>
+    <style>
+        :root {
+            --ink-black: oklch(0.15 0.01 65);
+            --ink-dark: oklch(0.25 0.01 65);
+            --ink-medium: oklch(0.42 0.01 65);
+            --ink-light: oklch(0.65 0.01 65);
+            --paper-white: oklch(0.97 0.005 90);
+            --paper-cream: oklch(0.95 0.01 85);
+            --cinnabar-red: oklch(0.55 0.18 25);
+            --border-color: oklch(0.85 0.01 85);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", sans-serif;
+            background: linear-gradient(135deg, var(--paper-cream) 0%, var(--paper-white) 100%);
+            min-height: 100vh;
+            padding: 15px;
+            color: var(--ink-black);
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            font-family: "Noto Serif SC", Georgia, serif;
+            text-align: center;
+            color: var(--ink-black);
+            margin-bottom: 15px;
+            font-size: 2em;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        .keyboard {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 6px;
+        }
+        
+        .key {
+            background: linear-gradient(135deg, var(--paper-cream) 0%, var(--paper-white) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 6px;
+            position: relative;
+            min-height: 140px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .key:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+            border-color: var(--ink-light);
+        }
+        
+        .key-label {
+            position: absolute;
+            top: 4px;
+            left: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            color: var(--ink-dark);
+            background: var(--paper-cream);
+            padding: 2px 5px;
+            border-radius: 3px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .key-content {
+            margin-top: 26px;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            gap: 1px;
+        }
+        
+        .char-group {
+            display: inline-flex;
+            align-items: flex-end;
+            margin-right: 2px;
+            margin-bottom: 2px;
+            flex-shrink: 0;
+        }
+        
+        .main-char {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            vertical-align: bottom;
+        }
+        
+        .sub-char {
+            width: 17px;
+            height: 17px;
+            object-fit: contain;
+            opacity: 0.85;
+            vertical-align: bottom;
+        }
+        
+        .small-code {
+            font-size: 10px;
+            color: var(--cinnabar-red);
+            font-weight: bold;
+            margin-left: 1px;
+            align-self: flex-end;
+            line-height: 1;
+        }
+        
+        .legend {
+            text-align: center;
+            margin-top: 15px;
+            color: var(--ink-medium);
+            font-size: 13px;
+        }
+        
+        .legend span {
+            margin: 0 12px;
+        }
+        
+        @media (max-width: 1400px) {
+            .key {
+                min-height: 130px;
+            }
+            .main-char {
+                width: 24px;
+                height: 24px;
+            }
+            .sub-char {
+                width: 15px;
+                height: 15px;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .key {
+                min-height: 120px;
+                padding: 5px;
+            }
+            .key-label {
+                font-size: 11px;
+            }
+            .main-char {
+                width: 22px;
+                height: 22px;
+            }
+            .sub-char {
+                width: 14px;
+                height: 14px;
+            }
+            .small-code {
+                font-size: 9px;
+            }
+        }
+        
+        @media (max-width: 1000px) {
+            .key {
+                min-height: 110px;
+                padding: 4px;
+            }
+            .key-label {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+            .main-char {
+                width: 20px;
+                height: 20px;
+            }
+            .sub-char {
+                width: 12px;
+                height: 12px;
+            }
+            .small-code {
+                font-size: 8px;
+            }
+            .key-content {
+                margin-top: 22px;
+            }
+        }
+        
+        .tooltip {
+            position: fixed;
+            background: linear-gradient(135deg, var(--paper-cream) 0%, var(--paper-white) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            font-size: 14px;
+            color: var(--ink-black);
+            max-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            font-family: "Noto Serif SC", Georgia, serif;
+        }
+        
+        .tooltip.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .tooltip-img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        
+        .tooltip-name {
+            text-align: center;
+            color: var(--ink-medium);
+            line-height: 1.5;
+        }
+        
+        .tooltip-close {
+            position: absolute;
+            top: 4px;
+            right: 8px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--ink-medium);
+            cursor: pointer;
+            padding: 2px 6px;
+            line-height: 1;
+        }
+        
+        .tooltip-close:hover {
+            color: var(--ink-dark);
+        }
+        
+        .char-img {
+            cursor: pointer;
+            transition: transform 0.15s;
+        }
+        
+        .char-img:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- <h1>麓鸣·字根表</h1> -->
+        <div class="keyboard">
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">Q</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5dfe.png" class="main-char char-img" alt="巾" title="巾" onclick="showTooltip(event, 'char_images/5dfe.png', '巾，示例“制、帐”')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7f8a.png" class="main-char char-img" alt="羊" title="羊" onclick="showTooltip(event, 'char_images/7f8a.png', '羊')">
+                            <img src="/char_images/e042.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e042.png', '差字头，示例“着”')">
+                            <img src="/char_images/e093.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e093.png', '美字头')">
+                            <img src="/char_images/e016.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e016.png', '南字心，示例“南、幸”')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6237.png" class="main-char char-img" alt="户" title="户" onclick="showTooltip(event, 'char_images/6237.png', '户')">
+                            <img src="/char_images/6236.png" class="sub-char char-img" alt="戶" title="戶" onclick="showTooltip(event, 'char_images/6236.png', '戶，示例“所”')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8c55.png" class="main-char char-img" alt="豕" title="豕" onclick="showTooltip(event, 'char_images/8c55.png', '豕')">
+                            <img src="/char_images/e420.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e420.png', '豕无一')">
+                            <span class="small-code">s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">W</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e29.png" class="main-char char-img" alt="丩" title="丩" onclick="showTooltip(event, 'char_images/4e29.png', '丩，示例“叫、收”')">
+                            <img src="/char_images/531a.png" class="sub-char char-img" alt="匚" title="匚" onclick="showTooltip(event, 'char_images/531a.png', '匚，示例“区、匪”')">
+                            <img src="/char_images/e007.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e007.png', '候右角')">
+                            <img src="/char_images/e40c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e40c.png', '乐二，示例“乐”')">
+                            <img src="/char_images/e057.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e057.png', '卬字旁，示例“迎、印”')">
+                            <img src="/char_images/e009.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e009.png', '叚右角')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8f9f.png" class="main-char char-img" alt="辟" title="辟" onclick="showTooltip(event, 'char_images/8f9f.png', '辟，示例“避、臂”')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/821f.png" class="main-char char-img" alt="舟" title="舟" onclick="showTooltip(event, 'char_images/821f.png', '舟')">
+                            <span class="small-code">o</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5202.png" class="main-char char-img" alt="刂" title="刂" onclick="showTooltip(event, 'char_images/5202.png', '刂')">
+                            <img src="/char_images/e0e3.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0e3.png', '乔字底，示例“介、养”')">
+                            <img src="/char_images/e001.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e001.png', '临字旁')">
+                            <img src="/char_images/e089.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e089.png', '班字心')">
+                            <img src="/char_images/e044.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e044.png', '师字旁')">
+                            <span class="small-code">d</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">E</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6b21.png" class="main-char char-img" alt="次" title="次" onclick="showTooltip(event, 'char_images/6b21.png', '次')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/e032.png" class="main-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e032.png', '壳无几，示例“壹、壶”')">
+                            <img src="/char_images/e072.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e072.png', '囊字头')">
+                            <img src="/char_images/e04b.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e04b.png', '彀左角')">
+                            <img src="/char_images/e0a0.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0a0.png', '索字头，示例“脖、勃”')">
+                            <span class="small-code">k</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e8c.png" class="main-char char-img" alt="二" title="二" onclick="showTooltip(event, 'char_images/4e8c.png', '二')">
+                            <span class="small-code">e</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7f36.png" class="main-char char-img" alt="缶" title="缶" onclick="showTooltip(event, 'char_images/7f36.png', '缶')">
+                            <img src="/char_images/e021.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e021.png', '卸字旁')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c0f.png" class="main-char char-img" alt="小" title="小" onclick="showTooltip(event, 'char_images/5c0f.png', '小')">
+                            <img src="/char_images/e06c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e06c.png', '练字边无七，示例“拣、炼”')">
+                            <img src="/char_images/e03e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e03e.png', '尚字头，示例“当、肖”')">
+                            <img src="/char_images/e442.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e442.png', '少无丿，示例“省”')">
+                            <span class="small-code">x</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">R</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/7cf8.png" class="main-char char-img" alt="糸" title="糸" onclick="showTooltip(event, 'char_images/7cf8.png', '糸')">
+                            <img src="/char_images/7e9f.png" class="sub-char char-img" alt="纟" title="纟" onclick="showTooltip(event, 'char_images/7e9f.png', '纟')">
+                            <img src="/char_images/7cf9.png" class="sub-char char-img" alt="糹" title="糹" onclick="showTooltip(event, 'char_images/7cf9.png', '糹（繁体丝旁）')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9ec4.png" class="main-char char-img" alt="黄" title="黄" onclick="showTooltip(event, 'char_images/9ec4.png', '黄')">
+                            <img src="/char_images/e851.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e851.png', '寅字底，示例“寅、演”')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5eff.png" class="main-char char-img" alt="廿" title="廿" onclick="showTooltip(event, 'char_images/5eff.png', '廿，示例“燕”')">
+                            <img src="/char_images/9fb7.png" class="sub-char char-img" alt="龷" title="龷" onclick="showTooltip(event, 'char_images/9fb7.png', '龷')">
+                            <span class="small-code">n</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5173.png" class="main-char char-img" alt="关" title="关" onclick="showTooltip(event, 'char_images/5173.png', '关')">
+                            <img src="/char_images/9fb9.png" class="sub-char char-img" alt="龹" title="龹" onclick="showTooltip(event, 'char_images/9fb9.png', '龹，示例“卷、拳”')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">T</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/76ee.png" class="main-char char-img" alt="目" title="目" onclick="showTooltip(event, 'char_images/76ee.png', '目')">
+                            <img src="/char_images/e099.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e099.png', '具字头')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5927.png" class="main-char char-img" alt="大" title="大" onclick="showTooltip(event, 'char_images/5927.png', '大')">
+                            <img src="/char_images/e043.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e043.png', '大')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5df4.png" class="main-char char-img" alt="巴" title="巴" onclick="showTooltip(event, 'char_images/5df4.png', '巴')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6bb3.png" class="main-char char-img" alt="殳" title="殳" onclick="showTooltip(event, 'char_images/6bb3.png', '殳')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e43.png" class="main-char char-img" alt="乃" title="乃" onclick="showTooltip(event, 'char_images/4e43.png', '乃，示例“盈、仍”')">
+                            <img src="/char_images/e05d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e05d.png', '凸无一，示例“凸”')">
+                            <span class="small-code">n</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">Y</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5ddd.png" class="main-char char-img" alt="川" title="川" onclick="showTooltip(event, 'char_images/5ddd.png', '川，示例“州、氚”')">
+                            <img src="/char_images/e448.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e448.png', '横着三个点，示例“州”')">
+                            <img src="/char_images/5ddc.png" class="sub-char char-img" alt="巜" title="巜" onclick="showTooltip(event, 'char_images/5ddc.png', '巜，示例“粼”')">
+                            <img src="/char_images/e07f.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e07f.png', '荒字底')">
+                            <img src="/char_images/5ddb.png" class="sub-char char-img" alt="巛" title="巛" onclick="showTooltip(event, 'char_images/5ddb.png', '巛')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5369.png" class="main-char char-img" alt="卩" title="卩" onclick="showTooltip(event, 'char_images/5369.png', '卩，示例“节、卫、叩”')">
+                            <img src="/char_images/e036.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e036.png', '姊字边')">
+                            <img src="/char_images/353e.png" class="sub-char char-img" alt="㔾" title="㔾" onclick="showTooltip(event, 'char_images/353e.png', '㔾')">
+                            <img src="/char_images/961d.png" class="sub-char char-img" alt="阝" title="阝" onclick="showTooltip(event, 'char_images/961d.png', '阝')">
+                            <img src="/char_images/e0b2.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0b2.png', '节字底')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c6e.png" class="main-char char-img" alt="屮" title="屮" onclick="showTooltip(event, 'char_images/5c6e.png', '屮，示例“出”')">
+                            <img src="/char_images/e092.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e092.png', '屯无一')">
+                            <img src="/char_images/e04e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e04e.png', '发二，示例“发”')">
+                            <img src="/char_images/4db9.png" class="sub-char char-img" alt="䶹" title="䶹" onclick="showTooltip(event, 'char_images/4db9.png', '䶹')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5404.png" class="main-char char-img" alt="各" title="各" onclick="showTooltip(event, 'char_images/5404.png', '各')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e24.png" class="main-char char-img" alt="两" title="两" onclick="showTooltip(event, 'char_images/4e24.png', '两')">
+                            <span class="small-code">l</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">U</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6208.png" class="main-char char-img" alt="戈" title="戈" onclick="showTooltip(event, 'char_images/6208.png', '戈')">
+                            <img src="/char_images/e03f.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e03f.png', '戈无丶，示例“尧”')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f0b.png" class="main-char char-img" alt="弋" title="弋" onclick="showTooltip(event, 'char_images/5f0b.png', '弋')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7535.png" class="main-char char-img" alt="电" title="电" onclick="showTooltip(event, 'char_images/7535.png', '电')">
+                            <img src="/char_images/e0ec.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0ec.png', '龟字底，示例“電”')">
+                            <img src="/char_images/e14c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e14c.png', '曳无丿，示例“曳、拽”')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5360.png" class="main-char char-img" alt="占" title="占" onclick="showTooltip(event, 'char_images/5360.png', '占')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9f99.png" class="main-char char-img" alt="龙" title="龙" onclick="showTooltip(event, 'char_images/9f99.png', '龙')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/56d7.png" class="main-char char-img" alt="囗" title="囗" onclick="showTooltip(event, 'char_images/56d7.png', '囗')">
+                            <span class="small-code">k</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9149.png" class="main-char char-img" alt="酉" title="酉" onclick="showTooltip(event, 'char_images/9149.png', '酉')">
+                            <span class="small-code">y</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">I</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/796d.png" class="main-char char-img" alt="祭" title="祭" onclick="showTooltip(event, 'char_images/796d.png', '祭，示例“察”')">
+                            <img src="/char_images/7676.png" class="sub-char char-img" alt="癶" title="癶" onclick="showTooltip(event, 'char_images/7676.png', '癶，示例“登”')">
+                            <img src="/char_images/e09b.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e09b.png', '祭字头')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f61.png" class="main-char char-img" alt="彡" title="彡" onclick="showTooltip(event, 'char_images/5f61.png', '彡，示例“杉、彭”')">
+                            <img src="/char_images/e41e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e41e.png', '横着两个丿，示例“勿”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6b62.png" class="main-char char-img" alt="止" title="止" onclick="showTooltip(event, 'char_images/6b62.png', '止')">
+                            <img src="/char_images/e437.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e437.png', '止，示例“步、址”')">
+                            <img src="/char_images/e073.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e073.png', '步字底')">
+                            <img src="/char_images/e451.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e451.png', '延字心无丿')">
+                            <img src="/char_images/9fb0.png" class="sub-char char-img" alt="龰" title="龰" onclick="showTooltip(event, 'char_images/9fb0.png', '龰')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/95e8.png" class="main-char char-img" alt="门" title="门" onclick="showTooltip(event, 'char_images/95e8.png', '门')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7a74.png" class="main-char char-img" alt="穴" title="穴" onclick="showTooltip(event, 'char_images/7a74.png', '穴')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8eab.png" class="main-char char-img" alt="身" title="身" onclick="showTooltip(event, 'char_images/8eab.png', '身')">
+                            <img src="/char_images/3406.png" class="sub-char char-img" alt="㐆" title="㐆" onclick="showTooltip(event, 'char_images/3406.png', '㐆，示例“殷”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6bcb.png" class="main-char char-img" alt="毋" title="毋" onclick="showTooltip(event, 'char_images/6bcb.png', '毋')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6bcc.png" class="main-char char-img" alt="毌" title="毌" onclick="showTooltip(event, 'char_images/6bcc.png', '毌，示例“贯”')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">O</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e36.png" class="main-char char-img" alt="丶" title="丶" onclick="showTooltip(event, 'char_images/4e36.png', '')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7247.png" class="main-char char-img" alt="片" title="片" onclick="showTooltip(event, 'char_images/7247.png', '片')">
+                            <span class="small-code">p</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/864e.png" class="main-char char-img" alt="虎" title="虎" onclick="showTooltip(event, 'char_images/864e.png', '虎')">
+                            <img src="/char_images/e153.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e153.png', '虎无七无几')">
+                            <img src="/char_images/864d.png" class="sub-char char-img" alt="虍" title="虍" onclick="showTooltip(event, 'char_images/864d.png', '虍，示例“虑、虐”')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/56db.png" class="main-char char-img" alt="四" title="四" onclick="showTooltip(event, 'char_images/56db.png', '四')">
+                            <img src="/char_images/7f52.png" class="sub-char char-img" alt="罒" title="罒" onclick="showTooltip(event, 'char_images/7f52.png', '罒')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7532.png" class="main-char char-img" alt="甲" title="甲" onclick="showTooltip(event, 'char_images/7532.png', '甲')">
+                            <span class="small-code">j</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">P</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5df1.png" class="main-char char-img" alt="己" title="己" onclick="showTooltip(event, 'char_images/5df1.png', '己')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5df2.png" class="main-char char-img" alt="已" title="已" onclick="showTooltip(event, 'char_images/5df2.png', '已')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5df3.png" class="main-char char-img" alt="巳" title="巳" onclick="showTooltip(event, 'char_images/5df3.png', '巳')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/91cc.png" class="main-char char-img" alt="里" title="里" onclick="showTooltip(event, 'char_images/91cc.png', '里')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f13.png" class="main-char char-img" alt="弓" title="弓" onclick="showTooltip(event, 'char_images/5f13.png', '弓')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7259.png" class="main-char char-img" alt="牙" title="牙" onclick="showTooltip(event, 'char_images/7259.png', '牙')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f17.png" class="main-char char-img" alt="弗" title="弗" onclick="showTooltip(event, 'char_images/5f17.png', '弗')">
+                            <img src="/char_images/e04a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e04a.png', '弟字底')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/44a4.png" class="main-char char-img" alt="䒤" title="䒤" onclick="showTooltip(event, 'char_images/44a4.png', '莫无大，示例“草、葛”')">
+                            <span class="small-code">m</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">q</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/8005.png" class="main-char char-img" alt="者" title="者" onclick="showTooltip(event, 'char_images/8005.png', '者')">
+                            <img src="/char_images/8002.png" class="sub-char char-img" alt="耂" title="耂" onclick="showTooltip(event, 'char_images/8002.png', '耂，示例“老”')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/e028.png" class="main-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e028.png', '向字框，示例“向、奥”')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e14.png" class="main-char char-img" alt="且" title="且" onclick="showTooltip(event, 'char_images/4e14.png', '且')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9aa8.png" class="main-char char-img" alt="骨" title="骨" onclick="showTooltip(event, 'char_images/9aa8.png', '骨')">
+                            <img src="/char_images/518e.png" class="sub-char char-img" alt="冎" title="冎" onclick="showTooltip(event, 'char_images/518e.png', '冎')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7528.png" class="main-char char-img" alt="用" title="用" onclick="showTooltip(event, 'char_images/7528.png', '用')">
+                            <img src="/char_images/e08c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e08c.png', '甬字底，示例“通、庸”')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/51e0.png" class="main-char char-img" alt="几" title="几" onclick="showTooltip(event, 'char_images/51e0.png', '几，示例“朵、风”')">
+                            <img src="/char_images/e0d6.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d6.png', '风字框')">
+                            <span class="small-code">j</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">w</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/65e5.png" class="main-char char-img" alt="日" title="日" onclick="showTooltip(event, 'char_images/65e5.png', '日')">
+                            <img src="/char_images/e00c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e00c.png', '冒字头，示例“帽、𠕤”')">
+                            <img src="/char_images/e070.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e070.png', '临下角，示例“临、𫝝”')">
+                            <span class="small-code">r</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/66f0.png" class="main-char char-img" alt="曰" title="曰" onclick="showTooltip(event, 'char_images/66f0.png', '曰')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/516d.png" class="main-char char-img" alt="六" title="六" onclick="showTooltip(event, 'char_images/516d.png', '六')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6c11.png" class="main-char char-img" alt="民" title="民" onclick="showTooltip(event, 'char_images/6c11.png', '民')">
+                            <span class="small-code">m</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">e</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5341.png" class="main-char char-img" alt="十" title="十" onclick="showTooltip(event, 'char_images/5341.png', '十')">
+                            <img src="/char_images/e068.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e068.png', '左字框')">
+                            <img src="/char_images/e413.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e413.png', '于无一')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/89c1.png" class="main-char char-img" alt="见" title="见" onclick="showTooltip(event, 'char_images/89c1.png', '见')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9ed1.png" class="main-char char-img" alt="黑" title="黑" onclick="showTooltip(event, 'char_images/9ed1.png', '黑')">
+                            <img src="/char_images/e0a9.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0a9.png', '曾字头无丷')">
+                            <img src="/char_images/e436.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e436.png', '黑五')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e61.png" class="main-char char-img" alt="乡" title="乡" onclick="showTooltip(event, 'char_images/4e61.png', '乡')">
+                            <span class="small-code">x</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">r</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6267.png" class="main-char char-img" alt="执" title="执" onclick="showTooltip(event, 'char_images/6267.png', '执')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7c73.png" class="main-char char-img" alt="米" title="米" onclick="showTooltip(event, 'char_images/7c73.png', '米')">
+                            <img src="/char_images/e0d8.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d8.png', '鬯字头无凵')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/3404.png" class="main-char char-img" alt="㐄" title="㐄" onclick="showTooltip(event, 'char_images/3404.png', '㐄，示例“降、桀”')">
+                            <img src="/char_images/e411.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e411.png', '年字底，示例“年”')">
+                            <span class="small-code">k</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4eba.png" class="main-char char-img" alt="人" title="人" onclick="showTooltip(event, 'char_images/4eba.png', '人')">
+                            <img src="/char_images/e43d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e43d.png', '会字头')">
+                            <span class="small-code">r</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/58eb.png" class="main-char char-img" alt="士" title="士" onclick="showTooltip(event, 'char_images/58eb.png', '士')">
+                            <span class="small-code">s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">t</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e3f.png" class="main-char char-img" alt="丿" title="丿" onclick="showTooltip(event, 'char_images/4e3f.png', '')">
+                            <span class="small-code">p</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/897f.png" class="main-char char-img" alt="西" title="西" onclick="showTooltip(event, 'char_images/897f.png', '西')">
+                            <img src="/char_images/8980.png" class="sub-char char-img" alt="覀" title="覀" onclick="showTooltip(event, 'char_images/8980.png', '覀，示例“票、栗”')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e03.png" class="main-char char-img" alt="七" title="七" onclick="showTooltip(event, 'char_images/4e03.png', '七')">
+                            <img src="/char_images/e416.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e416.png', '东二，示例“东、练”')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/975e.png" class="main-char char-img" alt="非" title="非" onclick="showTooltip(event, 'char_images/975e.png', '非')">
+                            <span class="small-code">f</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">y</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6bdb.png" class="main-char char-img" alt="毛" title="毛" onclick="showTooltip(event, 'char_images/6bdb.png', '毛')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5382.png" class="main-char char-img" alt="厂" title="厂" onclick="showTooltip(event, 'char_images/5382.png', '厂')">
+                            <img src="/char_images/e024.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e024.png', '反字框，示例“后、派”')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e60.png" class="main-char char-img" alt="习" title="习" onclick="showTooltip(event, 'char_images/4e60.png', '习')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c38.png" class="main-char char-img" alt="尸" title="尸" onclick="showTooltip(event, 'char_images/5c38.png', '尸')">
+                            <img src="/char_images/e031.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e031.png', '眉字框，示例“眉、声”')">
+                            <img src="/char_images/e06b.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e06b.png', '叚字旁无二，示例“假、遐”')">
+                            <span class="small-code">s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">u</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/8a00.png" class="main-char char-img" alt="言" title="言" onclick="showTooltip(event, 'char_images/8a00.png', '言')">
+                            <img src="/char_images/8ba0.png" class="sub-char char-img" alt="讠" title="讠" onclick="showTooltip(event, 'char_images/8ba0.png', '讠')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ea1.png" class="main-char char-img" alt="亡" title="亡" onclick="showTooltip(event, 'char_images/4ea1.png', '亡，示例“忙、忘”')">
+                            <img src="/char_images/4ebe.png" class="sub-char char-img" alt="亾" title="亾" onclick="showTooltip(event, 'char_images/4ebe.png', '亾或兦')">
+                            <img src="/char_images/5166.png" class="sub-char char-img" alt="兦" title="兦" onclick="showTooltip(event, 'char_images/5166.png', '兦或亾，示例“喝、葛”')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5200.png" class="main-char char-img" alt="刀" title="刀" onclick="showTooltip(event, 'char_images/5200.png', '刀')">
+                            <img src="/char_images/e0de.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0de.png', '黎右角')">
+                            <img src="/char_images/e427.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e427.png', '万无横，示例“万、敖”')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/957f.png" class="main-char char-img" alt="长" title="长" onclick="showTooltip(event, 'char_images/957f.png', '长')">
+                            <img src="/char_images/9adf.png" class="sub-char char-img" alt="髟" title="髟" onclick="showTooltip(event, 'char_images/9adf.png', '髟')">
+                            <img src="/char_images/9578.png" class="sub-char char-img" alt="镸" title="镸" onclick="showTooltip(event, 'char_images/9578.png', '镸')">
+                            <img src="/char_images/9577.png" class="sub-char char-img" alt="長" title="長" onclick="showTooltip(event, 'char_images/9577.png', '長')">
+                            <span class="small-code">c</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">i</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/624b.png" class="main-char char-img" alt="手" title="手" onclick="showTooltip(event, 'char_images/624b.png', '手')">
+                            <img src="/char_images/9fb5.png" class="sub-char char-img" alt="龵" title="龵" onclick="showTooltip(event, 'char_images/9fb5.png', '龵，示例“看”')">
+                            <img src="/char_images/624c.png" class="sub-char char-img" alt="扌" title="扌" onclick="showTooltip(event, 'char_images/624c.png', '扌')">
+                            <img src="/char_images/e410.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e410.png', '夫无㇏，示例“那”')">
+                            <img src="/char_images/e002.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e002.png', '举字底，示例“半、奉”')">
+                            <img src="/char_images/f002.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f002.png', '段字旁无横')">
+                            <span class="small-code">o</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">o</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6728.png" class="main-char char-img" alt="木" title="木" onclick="showTooltip(event, 'char_images/6728.png', '木')">
+                            <img src="/char_images/6729.png" class="sub-char char-img" alt="朩" title="朩" onclick="showTooltip(event, 'char_images/6729.png', '朩，示例“条、杂”')">
+                            <img src="/char_images/e04c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e04c.png', '木框，示例“來”')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7518.png" class="main-char char-img" alt="甘" title="甘" onclick="showTooltip(event, 'char_images/7518.png', '甘，示例“某”')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">p</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/8279.png" class="main-char char-img" alt="艹" title="艹" onclick="showTooltip(event, 'char_images/8279.png', '艹')">
+                            <img src="/char_images/5c22.png" class="sub-char char-img" alt="尢" title="尢" onclick="showTooltip(event, 'char_images/5c22.png', '尢，示例“尴、尬”')">
+                            <img src="/char_images/535d.png" class="sub-char char-img" alt="卝" title="卝" onclick="showTooltip(event, 'char_images/535d.png', '卝，示例“芈”')">
+                            <img src="/char_images/5efe.png" class="sub-char char-img" alt="廾" title="廾" onclick="showTooltip(event, 'char_images/5efe.png', '廾，示例“升、并”')">
+                            <img src="/char_images/4e0c.png" class="sub-char char-img" alt="丌" title="丌" onclick="showTooltip(event, 'char_images/4e0c.png', '丌，示例“鼻”')">
+                            <img src="/char_images/8278.png" class="sub-char char-img" alt="艸" title="艸" onclick="showTooltip(event, 'char_images/8278.png', '艸')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8fb6.png" class="main-char char-img" alt="辶" title="辶" onclick="showTooltip(event, 'char_images/8fb6.png', '辶')">
+                            <span class="small-code">c</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">A</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5154.png" class="main-char char-img" alt="兔" title="兔" onclick="showTooltip(event, 'char_images/5154.png', '兔')">
+                            <img src="/char_images/e010.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e010.png', '兔字头')">
+                            <span class="small-code">t</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7231.png" class="main-char char-img" alt="爱" title="爱" onclick="showTooltip(event, 'char_images/7231.png', '爱')">
+                            <img src="/char_images/e8c6.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e8c6.png', '爱字头')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9f20.png" class="main-char char-img" alt="鼠" title="鼠" onclick="showTooltip(event, 'char_images/9f20.png', '鼠')">
+                            <img src="/char_images/e0e2.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0e2.png', '鼠字底')">
+                            <img src="/char_images/e959.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e959.png', '巤字底，示例“巤”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9e7f.png" class="main-char char-img" alt="鹿" title="鹿" onclick="showTooltip(event, 'char_images/9e7f.png', '鹿')">
+                            <img src="/char_images/e0dc.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0dc.png', '鹿字框')">
+                            <img src="/char_images/e838.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e838.png', '鹿旁，示例“麒、麟”')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e5b.png" class="main-char char-img" alt="乛" title="乛" onclick="showTooltip(event, 'char_images/4e5b.png', '')">
+                            <span class="small-code">e</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/76f4.png" class="main-char char-img" alt="直" title="直" onclick="showTooltip(event, 'char_images/76f4.png', '直')">
+                            <img src="/char_images/9fba.png" class="sub-char char-img" alt="龺" title="龺" onclick="showTooltip(event, 'char_images/9fba.png', '龺，示例“韩、朝”')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e5d.png" class="main-char char-img" alt="九" title="九" onclick="showTooltip(event, 'char_images/4e5d.png', '九')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5e03.png" class="main-char char-img" alt="布" title="布" onclick="showTooltip(event, 'char_images/5e03.png', '布')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9769.png" class="main-char char-img" alt="革" title="革" onclick="showTooltip(event, 'char_images/9769.png', '革')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">S</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/51ab.png" class="main-char char-img" alt="冫" title="冫" onclick="showTooltip(event, 'char_images/51ab.png', '冫，示例“凉、凌”')">
+                            <img src="/char_images/e00d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e00d.png', '冬字底')">
+                            <img src="/char_images/e088.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e088.png', '飞无折，示例“率”')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5de5.png" class="main-char char-img" alt="工" title="工" onclick="showTooltip(event, 'char_images/5de5.png', '工')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5915.png" class="main-char char-img" alt="夕" title="夕" onclick="showTooltip(event, 'char_images/5915.png', '夕')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/97f3.png" class="main-char char-img" alt="音" title="音" onclick="showTooltip(event, 'char_images/97f3.png', '音')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ed1.png" class="main-char char-img" alt="仑" title="仑" onclick="showTooltip(event, 'char_images/4ed1.png', '仑')">
+                            <img src="/char_images/4f96.png" class="sub-char char-img" alt="侖" title="侖" onclick="showTooltip(event, 'char_images/4f96.png', '侖（繁体仑）')">
+                            <span class="small-code">l</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">D</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6c14.png" class="main-char char-img" alt="气" title="气" onclick="showTooltip(event, 'char_images/6c14.png', '气')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/77e2.png" class="main-char char-img" alt="矢" title="矢" onclick="showTooltip(event, 'char_images/77e2.png', '矢')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9f7f.png" class="main-char char-img" alt="齿" title="齿" onclick="showTooltip(event, 'char_images/9f7f.png', '齿')">
+                            <img src="/char_images/9f52.png" class="sub-char char-img" alt="齒" title="齒" onclick="showTooltip(event, 'char_images/9f52.png', '齒')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/97e6.png" class="main-char char-img" alt="韦" title="韦" onclick="showTooltip(event, 'char_images/97e6.png', '韦')">
+                            <img src="/char_images/97cb.png" class="sub-char char-img" alt="韋" title="韋" onclick="showTooltip(event, 'char_images/97cb.png', '韋（繁体韦）')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6597.png" class="main-char char-img" alt="斗" title="斗" onclick="showTooltip(event, 'char_images/6597.png', '斗')">
+                            <img src="/char_images/9b25.png" class="sub-char char-img" alt="鬥" title="鬥" onclick="showTooltip(event, 'char_images/9b25.png', '鬥（繁体斗）')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7530.png" class="main-char char-img" alt="田" title="田" onclick="showTooltip(event, 'char_images/7530.png', '田')">
+                            <span class="small-code">t</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">F</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5b50.png" class="main-char char-img" alt="子" title="子" onclick="showTooltip(event, 'char_images/5b50.png', '子')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8033.png" class="main-char char-img" alt="耳" title="耳" onclick="showTooltip(event, 'char_images/8033.png', '耳')">
+                            <span class="small-code">e</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/540c.png" class="main-char char-img" alt="同" title="同" onclick="showTooltip(event, 'char_images/540c.png', '同')">
+                            <img src="/char_images/e02a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e02a.png', '周字框')">
+                            <img src="/char_images/e060.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e060.png', '凹无一')">
+                            <img src="/char_images/5182.png" class="sub-char char-img" alt="冂" title="冂" onclick="showTooltip(event, 'char_images/5182.png', '冂（同字框）')">
+                            <img src="/char_images/51f5.png" class="sub-char char-img" alt="凵" title="凵" onclick="showTooltip(event, 'char_images/51f5.png', '凵，示例“函、画”')">
+                            <img src="/char_images/e439.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e439.png', '见字头')">
+                            <span class="small-code">t</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/518c.png" class="main-char char-img" alt="册" title="册" onclick="showTooltip(event, 'char_images/518c.png', '册')">
+                            <img src="/char_images/e44d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e44d.png', '典字头')">
+                            <img src="/char_images/e055.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e055.png', '扁字心')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/66f2.png" class="main-char char-img" alt="曲" title="曲" onclick="showTooltip(event, 'char_images/66f2.png', '曲，示例“蛐、曹”')">
+                            <span class="small-code">q</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">G</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/751f.png" class="main-char char-img" alt="生" title="生" onclick="showTooltip(event, 'char_images/751f.png', '生')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ea6.png" class="main-char char-img" alt="亦" title="亦" onclick="showTooltip(event, 'char_images/4ea6.png', '亦')">
+                            <img src="/char_images/e42f.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e42f.png', '变字头无亠')">
+                            <img src="/char_images/e025.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e025.png', '变字头，示例“栾、奕”')">
+                            <img src="/char_images/e42e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e42e.png', '亦字底，示例“赤”')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e01.png" class="main-char char-img" alt="丁" title="丁" onclick="showTooltip(event, 'char_images/4e01.png', '丁')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8d1d.png" class="main-char char-img" alt="贝" title="贝" onclick="showTooltip(event, 'char_images/8d1d.png', '贝')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/53e5.png" class="main-char char-img" alt="句" title="句" onclick="showTooltip(event, 'char_images/53e5.png', '句')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9b3c.png" class="main-char char-img" alt="鬼" title="鬼" onclick="showTooltip(event, 'char_images/9b3c.png', '鬼')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">H</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e4d.png" class="main-char char-img" alt="乍" title="乍" onclick="showTooltip(event, 'char_images/4e4d.png', '乍')">
+                            <span class="small-code">a</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6708.png" class="main-char char-img" alt="月" title="月" onclick="showTooltip(event, 'char_images/6708.png', '月')">
+                            <img src="/char_images/e034.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e034.png', '夜下角')">
+                            <img src="/char_images/e988.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e988.png', '丽下角')">
+                            <img src="/char_images/e0d2.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d2.png', '青字底')">
+                            <img src="/char_images/e083.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e083.png', '然左角')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/76ae.png" class="main-char char-img" alt="皮" title="皮" onclick="showTooltip(event, 'char_images/76ae.png', '皮')">
+                            <span class="small-code">p</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">J</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6b79.png" class="main-char char-img" alt="歹" title="歹" onclick="showTooltip(event, 'char_images/6b79.png', '歹')">
+                            <img src="/char_images/e098.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e098.png', '歺字头，示例“睿”')">
+                            <img src="/char_images/6b7a.png" class="sub-char char-img" alt="歺" title="歺" onclick="showTooltip(event, 'char_images/6b7a.png', '歺')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5e7f.png" class="main-char char-img" alt="广" title="广" onclick="showTooltip(event, 'char_images/5e7f.png', '广')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/513f.png" class="main-char char-img" alt="儿" title="儿" onclick="showTooltip(event, 'char_images/513f.png', '儿')">
+                            <img src="/char_images/e424.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e424.png', '见字底，示例“沈”')">
+                            <span class="small-code">e</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5409.png" class="main-char char-img" alt="吉" title="吉" onclick="showTooltip(event, 'char_images/5409.png', '吉')">
+                            <img src="/char_images/e832.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e832.png', '周字心')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/58f4.png" class="main-char char-img" alt="壴" title="壴" onclick="showTooltip(event, 'char_images/58f4.png', '壴，示例“喜、鼓”')">
+                            <span class="small-code">u</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">K</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/72ac.png" class="main-char char-img" alt="犬" title="犬" onclick="showTooltip(event, 'char_images/72ac.png', '犬')">
+                            <img src="/char_images/72ad.png" class="sub-char char-img" alt="犭" title="犭" onclick="showTooltip(event, 'char_images/72ad.png', '犭')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8c78.png" class="main-char char-img" alt="豸" title="豸" onclick="showTooltip(event, 'char_images/8c78.png', '豸，示例“貌、豺”')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7fbd.png" class="main-char char-img" alt="羽" title="羽" onclick="showTooltip(event, 'char_images/7fbd.png', '羽')">
+                            <span class="small-code">v</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/52b3.png" class="main-char char-img" alt="劳" title="劳" onclick="showTooltip(event, 'char_images/52b3.png', '劳')">
+                            <img src="/char_images/e916.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e916.png', '劳字头，示例“荣、荧”')">
+                            <img src="/char_images/f2c2a.png" class="sub-char char-img" alt="󲰪" title="󲰪" onclick="showTooltip(event, 'char_images/f2c2a.png', '艹加宀，示例“蓉、莞”')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/81e3.png" class="main-char char-img" alt="臣" title="臣" onclick="showTooltip(event, 'char_images/81e3.png', '臣')">
+                            <img src="/char_images/e0d5.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d5.png', '颐字旁，示例“熙、姬”')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/e078.png" class="main-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e078.png', '卧人，示例“每、午”')">
+                            <span class="small-code">t</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">L</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e4b.png" class="main-char char-img" alt="之" title="之" onclick="showTooltip(event, 'char_images/4e4b.png', '之')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8f7d.png" class="main-char char-img" alt="载" title="载" onclick="showTooltip(event, 'char_images/8f7d.png', '载')">
+                            <img src="/char_images/e950.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e950.png', '载字框，示例“截、裁”')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8c37.png" class="main-char char-img" alt="谷" title="谷" onclick="showTooltip(event, 'char_images/8c37.png', '谷')">
+                            <img src="/char_images/e948.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e948.png', '谷字头')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ea5.png" class="main-char char-img" alt="亥" title="亥" onclick="showTooltip(event, 'char_images/4ea5.png', '亥')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9c7c.png" class="main-char char-img" alt="鱼" title="鱼" onclick="showTooltip(event, 'char_images/9c7c.png', '鱼')">
+                            <img src="/char_images/9b5a.png" class="sub-char char-img" alt="魚" title="魚" onclick="showTooltip(event, 'char_images/9b5a.png', '魚（繁体魚）')">
+                            <span class="small-code">v</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/89d2.png" class="main-char char-img" alt="角" title="角" onclick="showTooltip(event, 'char_images/89d2.png', '角')">
+                            <img src="/char_images/e0bc.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0bc.png', '负字头，示例“负”')">
+                            <img src="/char_images/e423.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e423.png', '久无㇏')">
+                            <img src="/char_images/e020.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e020.png', '尔字头，示例”你“')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/752b.png" class="main-char char-img" alt="甫" title="甫" onclick="showTooltip(event, 'char_images/752b.png', '甫')">
+                            <span class="small-code">f</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">:</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6b20.png" class="main-char char-img" alt="欠" title="欠" onclick="showTooltip(event, 'char_images/6b20.png', '欠')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5fc3.png" class="main-char char-img" alt="心" title="心" onclick="showTooltip(event, 'char_images/5fc3.png', '心')">
+                            <img src="/char_images/5fc4.png" class="sub-char char-img" alt="忄" title="忄" onclick="showTooltip(event, 'char_images/5fc4.png', '忄')">
+                            <img src="/char_images/e051.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e051.png', '恭字底，示例“添、恭”')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/722a.png" class="main-char char-img" alt="爪" title="爪" onclick="showTooltip(event, 'char_images/722a.png', '爪，示例“爬、抓”')">
+                            <img src="/char_images/722b.png" class="sub-char char-img" alt="爫" title="爫" onclick="showTooltip(event, 'char_images/722b.png', '爫')">
+                            <span class="small-code">a</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c24.png" class="main-char char-img" alt="尤" title="尤" onclick="showTooltip(event, 'char_images/5c24.png', '尤')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/536f.png" class="main-char char-img" alt="卯" title="卯" onclick="showTooltip(event, 'char_images/536f.png', '卯，示例“聊、卿”')">
+                            <img src="/char_images/e8d9.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e8d9.png', '留字头')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5375.png" class="main-char char-img" alt="卵" title="卵" onclick="showTooltip(event, 'char_images/5375.png', '卵')">
+                            <span class="small-code">l</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">a</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6535.png" class="main-char char-img" alt="攵" title="攵" onclick="showTooltip(event, 'char_images/6535.png', '攵')">
+                            <img src="/char_images/6534.png" class="sub-char char-img" alt="攴" title="攴" onclick="showTooltip(event, 'char_images/6534.png', '攴，示例“敲”')">
+                            <span class="small-code">p</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ebb.png" class="main-char char-img" alt="亻" title="亻" onclick="showTooltip(event, 'char_images/4ebb.png', '亻')">
+                            <span class="small-code">r</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5206.png" class="main-char char-img" alt="分" title="分" onclick="showTooltip(event, 'char_images/5206.png', '分')">
+                            <span class="small-code">f</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">s</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/9ad8.png" class="main-char char-img" alt="高" title="高" onclick="showTooltip(event, 'char_images/9ad8.png', '高')">
+                            <img src="/char_images/e804.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e804.png', '亮字头，示例”亭、毫“')">
+                            <img src="/char_images/e006.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e006.png', '高字头，示例“京”')">
+                            <img src="/char_images/e0ac.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0ac.png', '高头')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/53ca.png" class="main-char char-img" alt="及" title="及" onclick="showTooltip(event, 'char_images/53ca.png', '及')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8db3.png" class="main-char char-img" alt="足" title="足" onclick="showTooltip(event, 'char_images/8db3.png', '足')">
+                            <img src="/char_images/e0c6.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c6.png', '𧾷')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e86.png" class="main-char char-img" alt="了" title="了" onclick="showTooltip(event, 'char_images/4e86.png', '了')">
+                            <span class="small-code">l</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">d</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/767d.png" class="main-char char-img" alt="白" title="白" onclick="showTooltip(event, 'char_images/767d.png', '白')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/592b.png" class="main-char char-img" alt="夫" title="夫" onclick="showTooltip(event, 'char_images/592b.png', '夫')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e09.png" class="main-char char-img" alt="三" title="三" onclick="showTooltip(event, 'char_images/4e09.png', '三')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5176.png" class="main-char char-img" alt="其" title="其" onclick="showTooltip(event, 'char_images/5176.png', '其')">
+                            <img src="/char_images/e096.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e096.png', '其字头')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8d70.png" class="main-char char-img" alt="走" title="走" onclick="showTooltip(event, 'char_images/8d70.png', '走')">
+                            <span class="small-code">z</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">f</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e00.png" class="main-char char-img" alt="一" title="一" onclick="showTooltip(event, 'char_images/4e00.png', '')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/98df.png" class="main-char char-img" alt="食" title="食" onclick="showTooltip(event, 'char_images/98df.png', '食')">
+                            <img src="/char_images/9963.png" class="sub-char char-img" alt="饣" title="饣" onclick="showTooltip(event, 'char_images/9963.png', '饣')">
+                            <img src="/char_images/98e0.png" class="sub-char char-img" alt="飠" title="飠" onclick="showTooltip(event, 'char_images/98e0.png', '飠（繁体饣）')">
+                            <span class="small-code">s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">g</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e08.png" class="main-char char-img" alt="丈" title="丈" onclick="showTooltip(event, 'char_images/4e08.png', '丈')">
+                            <img src="/char_images/f005.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f005.png', '丈框不出头，示例“更”')">
+                            <img src="/char_images/f003.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f003.png', '丈框，示例“使、吏”')">
+                            <span class="small-code">z</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5ef4.png" class="main-char char-img" alt="廴" title="廴" onclick="showTooltip(event, 'char_images/5ef4.png', '廴')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/820c.png" class="main-char char-img" alt="舌" title="舌" onclick="showTooltip(event, 'char_images/820c.png', '舌')">
+                            <img src="/char_images/e0c2.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c2.png', '舍字底')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/81ea.png" class="main-char char-img" alt="自" title="自" onclick="showTooltip(event, 'char_images/81ea.png', '自')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/884c.png" class="main-char char-img" alt="行" title="行" onclick="showTooltip(event, 'char_images/884c.png', '行，示例“衍、衡”')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f73.png" class="main-char char-img" alt="彳" title="彳" onclick="showTooltip(event, 'char_images/5f73.png', '彳')">
+                            <img src="/char_images/e824.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e824.png', '微字框（微无几）')">
+                            <img src="/char_images/e834.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e834.png', '赢字框，示例“嬴、羸”')">
+                            <img src="/char_images/e849.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e849.png', '微无彳无几')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e8d.png" class="main-char char-img" alt="亍" title="亍" onclick="showTooltip(event, 'char_images/4e8d.png', '亍')">
+                            <span class="small-code">u</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">h</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5345.png" class="main-char char-img" alt="卅" title="卅" onclick="showTooltip(event, 'char_images/5345.png', '卅')">
+                            <img src="/char_images/e050.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e050.png', '带字头')">
+                            <img src="/char_images/534c.png" class="sub-char char-img" alt="卌" title="卌" onclick="showTooltip(event, 'char_images/534c.png', '卌，示例“舞”')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9ebb.png" class="main-char char-img" alt="麻" title="麻" onclick="showTooltip(event, 'char_images/9ebb.png', '麻，示例“魔、摩”')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7236.png" class="main-char char-img" alt="父" title="父" onclick="showTooltip(event, 'char_images/7236.png', '父')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e95.png" class="main-char char-img" alt="井" title="井" onclick="showTooltip(event, 'char_images/4e95.png', '井')">
+                            <img src="/char_images/f001.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f001.png', '寒字腰无一')">
+                            <img src="/char_images/e415.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e415.png', '寒字腰，示例“襄”')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/e05e.png" class="main-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e05e.png', '商字头，示例“商、摘”')">
+                            <img src="/char_images/e062.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e062.png', '帝字头，示例“旁”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5315.png" class="main-char char-img" alt="匕" title="匕" onclick="showTooltip(event, 'char_images/5315.png', '匕')">
+                            <img src="/char_images/e44f.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e44f.png', '以字旁，示例“以、拟”')">
+                            <img src="/char_images/e079.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e079.png', '比字旁')">
+                            <img src="/char_images/e011.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e011.png', '化字边')">
+                            <span class="small-code">b</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">j</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e59.png" class="main-char char-img" alt="乙" title="乙" onclick="showTooltip(event, 'char_images/4e59.png', '')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5b80.png" class="main-char char-img" alt="宀" title="宀" onclick="showTooltip(event, 'char_images/5b80.png', '宀')">
+                            <span class="small-code">b</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">k</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/98de.png" class="main-char char-img" alt="飞" title="飞" onclick="showTooltip(event, 'char_images/98de.png', '飞')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/96e8.png" class="main-char char-img" alt="雨" title="雨" onclick="showTooltip(event, 'char_images/96e8.png', '雨')">
+                            <img src="/char_images/e0d0.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d0.png', '雨头')">
+                            <span class="small-code">v</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5343.png" class="main-char char-img" alt="千" title="千" onclick="showTooltip(event, 'char_images/5343.png', '千，示例“垂、乖”')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/74e6.png" class="main-char char-img" alt="瓦" title="瓦" onclick="showTooltip(event, 'char_images/74e6.png', '瓦')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5408.png" class="main-char char-img" alt="合" title="合" onclick="showTooltip(event, 'char_images/5408.png', '合，示例“拿、答、哈”')">
+                            <img src="/char_images/4ebc.png" class="sub-char char-img" alt="亼" title="亼" onclick="showTooltip(event, 'char_images/4ebc.png', '亼')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4eca.png" class="main-char char-img" alt="今" title="今" onclick="showTooltip(event, 'char_images/4eca.png', '今')">
+                            <img src="/char_images/4ebd.png" class="sub-char char-img" alt="亽" title="亽" onclick="showTooltip(event, 'char_images/4ebd.png', '亽')">
+                            <span class="small-code">j</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">l</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/807f.png" class="main-char char-img" alt="聿" title="聿" onclick="showTooltip(event, 'char_images/807f.png', '聿')">
+                            <img src="/char_images/e431.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e431.png', '聿无二')">
+                            <img src="/char_images/e06d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e06d.png', '争字底')">
+                            <img src="/char_images/e06e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e06e.png', '妻字头无一')">
+                            <img src="/char_images/8080.png" class="sub-char char-img" alt="肀" title="肀" onclick="showTooltip(event, 'char_images/8080.png', '肀')">
+                            <img src="/char_images/f000.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f000.png', '事字底')">
+                            <span class="small-code">v</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e42.png" class="main-char char-img" alt="乂" title="乂" onclick="showTooltip(event, 'char_images/4e42.png', '乂，示例“希、区”')">
+                            <img src="/char_images/3405.png" class="sub-char char-img" alt="㐅" title="㐅" onclick="showTooltip(event, 'char_images/3405.png', '㐅，示例“気、风”')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/3840.png" class="main-char char-img" alt="㡀" title="㡀" onclick="showTooltip(event, 'char_images/3840.png', '㡀')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7592.png" class="main-char char-img" alt="疒" title="疒" onclick="showTooltip(event, 'char_images/7592.png', '疒')">
+                            <span class="small-code">b</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">;</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/620a.png" class="main-char char-img" alt="戊" title="戊" onclick="showTooltip(event, 'char_images/620a.png', '戊')">
+                            <img src="/char_images/e0ad.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0ad.png', '臧字框，示例“藏”')">
+                            <img src="/char_images/6209.png" class="sub-char char-img" alt="戉" title="戉" onclick="showTooltip(event, 'char_images/6209.png', '戉，示例“越”')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/706b.png" class="main-char char-img" alt="火" title="火" onclick="showTooltip(event, 'char_images/706b.png', '火')">
+                            <img src="/char_images/e408.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e408.png', '业无一')">
+                            <img src="/char_images/e430.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e430.png', '兼无䒑无彐')">
+                            <img src="/char_images/706c.png" class="sub-char char-img" alt="灬" title="灬" onclick="showTooltip(event, 'char_images/706c.png', '灬')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/826e.png" class="main-char char-img" alt="艮" title="艮" onclick="showTooltip(event, 'char_images/826e.png', '艮')">
+                            <img src="/char_images/e01c.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e01c.png', '即字旁，示例“既、卿”')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/76bf.png" class="main-char char-img" alt="皿" title="皿" onclick="showTooltip(event, 'char_images/76bf.png', '皿')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/652f.png" class="main-char char-img" alt="支" title="支" onclick="showTooltip(event, 'char_images/652f.png', '支')">
+                            <span class="small-code">i</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">Z</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6c0f.png" class="main-char char-img" alt="氏" title="氏" onclick="showTooltip(event, 'char_images/6c0f.png', '氏')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5973.png" class="main-char char-img" alt="女" title="女" onclick="showTooltip(event, 'char_images/5973.png', '女')">
+                            <span class="small-code">n</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ea0.png" class="main-char char-img" alt="亠" title="亠" onclick="showTooltip(event, 'char_images/4ea0.png', '亠')">
+                            <span class="small-code">t</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">X</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/516b.png" class="main-char char-img" alt="八" title="八" onclick="showTooltip(event, 'char_images/516b.png', '八')">
+                            <img src="/char_images/e446.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e446.png', '横着三个点，示例“办”')">
+                            <img src="/char_images/4491.png" class="sub-char char-img" alt="䒑" title="䒑" onclick="showTooltip(event, 'char_images/4491.png', '䒑，示例“逆、兹”')">
+                            <img src="/char_images/e450.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e450.png', '共字底，示例“兴、典”')">
+                            <img src="/char_images/4e37.png" class="sub-char char-img" alt="丷" title="丷" onclick="showTooltip(event, 'char_images/4e37.png', '丷')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9e1f.png" class="main-char char-img" alt="鸟" title="鸟" onclick="showTooltip(event, 'char_images/9e1f.png', '鸟')">
+                            <img src="/char_images/e0d7.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d7.png', '鳥（繁体鸟）无灬')">
+                            <img src="/char_images/e0da.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0da.png', '鸟无一，示例“岛”')">
+                            <img src="/char_images/9ce5.png" class="sub-char char-img" alt="鳥" title="鳥" onclick="showTooltip(event, 'char_images/9ce5.png', '鳥')">
+                            <span class="small-code">n</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e4c.png" class="main-char char-img" alt="乌" title="乌" onclick="showTooltip(event, 'char_images/4e4c.png', '乌')">
+                            <img src="/char_images/e186.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e186.png', '乌无一')">
+                            <img src="/char_images/70cf.png" class="sub-char char-img" alt="烏" title="烏" onclick="showTooltip(event, 'char_images/70cf.png', '烏（繁体鸟）')">
+                            <span class="small-code">u</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">C</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/758b.png" class="main-char char-img" alt="疋" title="疋" onclick="showTooltip(event, 'char_images/758b.png', '疋')">
+                            <img src="/char_images/e049.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e049.png', '延字心')">
+                            <img src="/char_images/e091.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e091.png', '疏字旁')">
+                            <img src="/char_images/e03a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e03a.png', '定字底')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5f50.png" class="main-char char-img" alt="彐" title="彐" onclick="showTooltip(event, 'char_images/5f50.png', '彐，示例“扫、帚”')">
+                            <img src="/char_images/5f51.png" class="sub-char char-img" alt="彑" title="彑" onclick="showTooltip(event, 'char_images/5f51.png', '彑，示例“互、缘”')">
+                            <img src="/char_images/e0b4.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0b4.png', '虐字底')">
+                            <img src="/char_images/e432.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e432.png', '录字头，示例“录”')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5196.png" class="main-char char-img" alt="冖" title="冖" onclick="showTooltip(event, 'char_images/5196.png', '冖')">
+                            <span class="small-code">t</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/675f.png" class="main-char char-img" alt="束" title="束" onclick="showTooltip(event, 'char_images/675f.png', '束')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7acb.png" class="main-char char-img" alt="立" title="立" onclick="showTooltip(event, 'char_images/7acb.png', '立')">
+                            <img src="/char_images/e054.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e054.png', '立无横，示例“产、豙”')">
+                            <span class="small-code">l</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">V</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5165.png" class="main-char char-img" alt="入" title="入" onclick="showTooltip(event, 'char_images/5165.png', '入，示例“汆、肏”')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/571f.png" class="main-char char-img" alt="土" title="土" onclick="showTooltip(event, 'char_images/571f.png', '土')">
+                            <img src="/char_images/e43a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e43a.png', '里无日')">
+                            <span class="small-code">t</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">B</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/800c.png" class="main-char char-img" alt="而" title="而" onclick="showTooltip(event, 'char_images/800c.png', '而，示例“耍、需”')">
+                            <span class="small-code">e</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/53b6.png" class="main-char char-img" alt="厶" title="厶" onclick="showTooltip(event, 'char_images/53b6.png', '厶，示例“去、矣”')">
+                            <img src="/char_images/e04d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e04d.png', '虫无口')">
+                            <img src="/char_images/9fb4.png" class="sub-char char-img" alt="龴" title="龴" onclick="showTooltip(event, 'char_images/9fb4.png', '龴，示例“令、甬”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7531.png" class="main-char char-img" alt="由" title="由" onclick="showTooltip(event, 'char_images/7531.png', '由')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/866b.png" class="main-char char-img" alt="虫" title="虫" onclick="showTooltip(event, 'char_images/866b.png', '虫')">
+                            <img src="/char_images/e0c1.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c1.png', '贵字头，示例“贵”')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5185.png" class="main-char char-img" alt="内" title="内" onclick="showTooltip(event, 'char_images/5185.png', '内')">
+                            <img src="/char_images/79b8.png" class="sub-char char-img" alt="禸" title="禸" onclick="showTooltip(event, 'char_images/79b8.png', '禸，示例“离”')">
+                            <img src="/char_images/e005.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e005.png', '禺字底，示例“遇”')">
+                            <span class="small-code">n</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">N</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e94.png" class="main-char char-img" alt="五" title="五" onclick="showTooltip(event, 'char_images/4e94.png', '五')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e91.png" class="main-char char-img" alt="云" title="云" onclick="showTooltip(event, 'char_images/4e91.png', '云')">
+                            <img src="/char_images/e00a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e00a.png', '充字头')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6bcd.png" class="main-char char-img" alt="母" title="母" onclick="showTooltip(event, 'char_images/6bcd.png', '母')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/793a.png" class="main-char char-img" alt="示" title="示" onclick="showTooltip(event, 'char_images/793a.png', '示')">
+                            <img src="/char_images/793b.png" class="sub-char char-img" alt="礻" title="礻" onclick="showTooltip(event, 'char_images/793b.png', '礻')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/58ec.png" class="main-char char-img" alt="壬" title="壬" onclick="showTooltip(event, 'char_images/58ec.png', '壬')">
+                            <img src="/char_images/2123c.png" class="sub-char char-img" alt="𡈼" title="𡈼" onclick="showTooltip(event, 'char_images/2123c.png', '𡈼，示例“丢”')">
+                            <span class="small-code">r</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">M</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/708e.png" class="main-char char-img" alt="炎" title="炎" onclick="showTooltip(event, 'char_images/708e.png', '炎')">
+                            <img src="/char_images/708f.png" class="sub-char char-img" alt="炏" title="炏" onclick="showTooltip(event, 'char_images/708f.png', '炏')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/572d.png" class="main-char char-img" alt="圭" title="圭" onclick="showTooltip(event, 'char_images/572d.png', '圭')">
+                            <img src="/char_images/ea89.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/ea89.png', '两个士，示例“壵”')">
+                            <img src="/char_images/e83b.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e83b.png', '横着两个土，示例“垚”')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4020.png" class="main-char char-img" alt="䀠" title="䀠" onclick="showTooltip(event, 'char_images/4020.png', '䀠，示例“瞿、𪄊”')">
+                            <img src="/char_images/e8e7.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e8e7.png', '瞿字头，示例“灈、㬬”')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c1a.png" class="main-char char-img" alt="尚" title="尚" onclick="showTooltip(event, 'char_images/5c1a.png', '尚')">
+                            <img src="/char_images/e815.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e815.png', '学无子，示例“觉”')">
+                            <img src="/char_images/9fb8.png" class="sub-char char-img" alt="龸" title="龸" onclick="showTooltip(event, 'char_images/9fb8.png', '龸，示例“尝”')">
+                            <img src="/char_images/e0c3.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c3.png', '尚头，示例“党、常”')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8f66.png" class="main-char char-img" alt="车" title="车" onclick="showTooltip(event, 'char_images/8f66.png', '车')">
+                            <img src="/char_images/e0c8.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c8.png', '车旁')">
+                            <img src="/char_images/8eca.png" class="sub-char char-img" alt="車" title="車" onclick="showTooltip(event, 'char_images/8eca.png', '車')">
+                            <span class="small-code">c</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">&lt;</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/65b9.png" class="main-char char-img" alt="方" title="方" onclick="showTooltip(event, 'char_images/65b9.png', '方')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8fb0.png" class="main-char char-img" alt="辰" title="辰" onclick="showTooltip(event, 'char_images/8fb0.png', '辰')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/529b.png" class="main-char char-img" alt="力" title="力" onclick="showTooltip(event, 'char_images/529b.png', '力')">
+                            <img src="/char_images/e401.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e401.png', '为字框')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8f9b.png" class="main-char char-img" alt="辛" title="辛" onclick="showTooltip(event, 'char_images/8f9b.png', '辛')">
+                            <img src="/char_images/e0c9.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0c9.png', '辛旁，示例“辣、辨”')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5c71.png" class="main-char char-img" alt="山" title="山" onclick="showTooltip(event, 'char_images/5c71.png', '山')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/74dc.png" class="main-char char-img" alt="瓜" title="瓜" onclick="showTooltip(event, 'char_images/74dc.png', '瓜')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">&gt;</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/9b32.png" class="main-char char-img" alt="鬲" title="鬲" onclick="showTooltip(event, 'char_images/9b32.png', '鬲')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e30.png" class="main-char char-img" alt="丰" title="丰" onclick="showTooltip(event, 'char_images/4e30.png', '丰')">
+                            <img src="/char_images/e064.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e064.png', '春字头')">
+                            <img src="/char_images/9fb6.png" class="sub-char char-img" alt="龶" title="龶" onclick="showTooltip(event, 'char_images/9fb6.png', '龶，示例“毒”')">
+                            <img src="/char_images/e003.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e003.png', '寿字头')">
+                            <span class="small-code">f</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8c46.png" class="main-char char-img" alt="豆" title="豆" onclick="showTooltip(event, 'char_images/8c46.png', '豆')">
+                            <span class="small-code">d</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5e7a.png" class="main-char char-img" alt="幺" title="幺" onclick="showTooltip(event, 'char_images/5e7a.png', '幺')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e88.png" class="main-char char-img" alt="予" title="予" onclick="showTooltip(event, 'char_images/4e88.png', '予')">
+                            <span class="small-code">v</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/77db.png" class="main-char char-img" alt="矛" title="矛" onclick="showTooltip(event, 'char_images/77db.png', '矛')">
+                            <span class="small-code">m</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">?</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/5e72.png" class="main-char char-img" alt="干" title="干" onclick="showTooltip(event, 'char_images/5e72.png', '干')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e2c.png" class="main-char char-img" alt="丬" title="丬" onclick="showTooltip(event, 'char_images/4e2c.png', '丬')">
+                            <img src="/char_images/e012.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e012.png', '北字旁，示例“乘、燕”')">
+                            <img src="/char_images/723f.png" class="sub-char char-img" alt="爿" title="爿" onclick="showTooltip(event, 'char_images/723f.png', '爿')">
+                            <img src="/char_images/e0e0.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0e0.png', '鼎右角')">
+                            <img src="/char_images/e0e1.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0e1.png', '鼎左角')">
+                            <span class="small-code">p</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8863.png" class="main-char char-img" alt="衣" title="衣" onclick="showTooltip(event, 'char_images/8863.png', '衣')">
+                            <img src="/char_images/e0b7.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0b7.png', '衣字底')">
+                            <img src="/char_images/8864.png" class="sub-char char-img" alt="衤" title="衤" onclick="showTooltip(event, 'char_images/8864.png', '衤')">
+                            <img src="/char_images/e80a.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e80a.png', '衣框，示例“哀、衷”')">
+                            <img src="/char_images/e07e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e07e.png', '旅下角，示例“旅、派”')">
+                            <img src="/char_images/e422.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e422.png', '畏字底，示例“畏、丧”')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9875.png" class="main-char char-img" alt="页" title="页" onclick="showTooltip(event, 'char_images/9875.png', '页')">
+                            <img src="/char_images/e105.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e105.png', '㥑字头')">
+                            <img src="/char_images/e03d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e03d.png', '寡字腰')">
+                            <img src="/char_images/e033.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e033.png', '夏字头')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/81fc.png" class="main-char char-img" alt="臼" title="臼" onclick="showTooltip(event, 'char_images/81fc.png', '臼')">
+                            <img src="/char_images/e421.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e421.png', '臼裂')">
+                            <span class="small-code">j</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="key">
+                    <span class="key-label">z</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e5f.png" class="main-char char-img" alt="也" title="也" onclick="showTooltip(event, 'char_images/4e5f.png', '也')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/672a.png" class="main-char char-img" alt="未" title="未" onclick="showTooltip(event, 'char_images/672a.png', '未')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/91d1.png" class="main-char char-img" alt="金" title="金" onclick="showTooltip(event, 'char_images/91d1.png', '金')">
+                            <img src="/char_images/91d2.png" class="sub-char char-img" alt="釒" title="釒" onclick="showTooltip(event, 'char_images/91d2.png', '釒')">
+                            <img src="/char_images/9485.png" class="sub-char char-img" alt="钅" title="钅" onclick="showTooltip(event, 'char_images/9485.png', '钅')">
+                            <img src="/char_images/e0cf.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0cf.png', '金字底')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/65e0.png" class="main-char char-img" alt="无" title="无" onclick="showTooltip(event, 'char_images/65e0.png', '无')">
+                            <img src="/char_images/7121.png" class="sub-char char-img" alt="無" title="無" onclick="showTooltip(event, 'char_images/7121.png', '無')">
+                            <img src="/char_images/65e1.png" class="sub-char char-img" alt="旡" title="旡" onclick="showTooltip(event, 'char_images/65e1.png', '旡，示例“既”')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5bf8.png" class="main-char char-img" alt="寸" title="寸" onclick="showTooltip(event, 'char_images/5bf8.png', '寸')">
+                            <span class="small-code">c</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">x</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/53ef.png" class="main-char char-img" alt="可" title="可" onclick="showTooltip(event, 'char_images/53ef.png', '可')">
+                            <span class="small-code">k</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/535c.png" class="main-char char-img" alt="卜" title="卜" onclick="showTooltip(event, 'char_images/535c.png', '卜，示例“处、补”')">
+                            <img src="/char_images/e018.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e018.png', '卢字头，示例“占、上”')">
+                            <span class="small-code">b</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/79be.png" class="main-char char-img" alt="禾" title="禾" onclick="showTooltip(event, 'char_images/79be.png', '禾')">
+                            <img src="/char_images/e40e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e40e.png', '余字底')">
+                            <img src="/char_images/e44b.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e44b.png', '禾框，示例“乘、秉”')">
+                            <span class="small-code">h</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5149.png" class="main-char char-img" alt="光" title="光" onclick="showTooltip(event, 'char_images/5149.png', '光')">
+                            <span class="small-code">g</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">c</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/4e28.png" class="main-char char-img" alt="丨" title="丨" onclick="showTooltip(event, 'char_images/4e28.png', '')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9f50.png" class="main-char char-img" alt="齐" title="齐" onclick="showTooltip(event, 'char_images/9f50.png', '齐')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/7af9.png" class="main-char char-img" alt="竹" title="竹" onclick="showTooltip(event, 'char_images/7af9.png', '竹')">
+                            <img src="/char_images/e09e.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e09e.png', '𥫗')">
+                            <img src="/char_images/e014.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e014.png', '临右角')">
+                            <span class="small-code">u</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9762.png" class="main-char char-img" alt="面" title="面" onclick="showTooltip(event, 'char_images/9762.png', '面')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9f9f.png" class="main-char char-img" alt="龟" title="龟" onclick="showTooltip(event, 'char_images/9f9f.png', '龟')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e0d.png" class="main-char char-img" alt="不" title="不" onclick="showTooltip(event, 'char_images/4e0d.png', '不')">
+                            <span class="small-code">b</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">v</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6587.png" class="main-char char-img" alt="文" title="文" onclick="showTooltip(event, 'char_images/6587.png', '文')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/53c8.png" class="main-char char-img" alt="又" title="又" onclick="showTooltip(event, 'char_images/53c8.png', '又')">
+                            <img src="/char_images/e434.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e434.png', '经右角')">
+                            <span class="small-code">y</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">b</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/53e3.png" class="main-char char-img" alt="口" title="口" onclick="showTooltip(event, 'char_images/53e3.png', '口')">
+                            <span class="small-code">k</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">n</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/6c34.png" class="main-char char-img" alt="水" title="水" onclick="showTooltip(event, 'char_images/6c34.png', '水')">
+                            <img src="/char_images/6c35.png" class="sub-char char-img" alt="氵" title="氵" onclick="showTooltip(event, 'char_images/6c35.png', '氵')">
+                            <img src="/char_images/e059.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e059.png', '永无丶')">
+                            <img src="/char_images/e42d.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e42d.png', '学字头，示例“觉、学”')">
+                            <img src="/char_images/6c3a.png" class="sub-char char-img" alt="氺" title="氺" onclick="showTooltip(event, 'char_images/6c3a.png', '氺')">
+                            <img src="/char_images/e8e2.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e8e2.png', '益字头')">
+                            <img src="/char_images/f004.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/f004.png', '乑无丿')">
+                            <img src="/char_images/e0d9.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e0d9.png', '鳏下角')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/672c.png" class="main-char char-img" alt="本" title="本" onclick="showTooltip(event, 'char_images/672c.png', '本')">
+                            <span class="small-code">b</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">m</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/53cc.png" class="main-char char-img" alt="双" title="双" onclick="showTooltip(event, 'char_images/53cc.png', '双')">
+                            <img src="/char_images/355b.png" class="sub-char char-img" alt="㕛" title="㕛" onclick="showTooltip(event, 'char_images/355b.png', '㕛')">
+                            <span class="small-code">s</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4ece.png" class="main-char char-img" alt="从" title="从" onclick="showTooltip(event, 'char_images/4ece.png', '从')">
+                            <img src="/char_images/f01fa.png" class="sub-char char-img" alt="󰇺" title="󰇺" onclick="showTooltip(event, 'char_images/f01fa.png', '横着两个人，示例“坐”')">
+                            <img src="/char_images/4ecc.png" class="sub-char char-img" alt="仌" title="仌" onclick="showTooltip(event, 'char_images/4ecc.png', '仌')">
+                            <img src="/char_images/e8b8.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e8b8.png', '横着两个入')">
+                            <span class="small-code">c</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5405.png" class="main-char char-img" alt="吅" title="吅" onclick="showTooltip(event, 'char_images/5405.png', '吅，示例“器、骂”')">
+                            <img src="/char_images/382f.png" class="sub-char char-img" alt="㠯" title="㠯" onclick="showTooltip(event, 'char_images/382f.png', '㠯')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/6797.png" class="main-char char-img" alt="林" title="林" onclick="showTooltip(event, 'char_images/6797.png', '林')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/725b.png" class="main-char char-img" alt="牛" title="牛" onclick="showTooltip(event, 'char_images/725b.png', '牛')">
+                            <img src="/char_images/725c.png" class="sub-char char-img" alt="牜" title="牜" onclick="showTooltip(event, 'char_images/725c.png', '牛旁')">
+                            <img src="/char_images/e029.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e029.png', '告字头，示例“靠、浩”')">
+                            <span class="small-code">n</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">,</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/8012.png" class="main-char char-img" alt="耒" title="耒" onclick="showTooltip(event, 'char_images/8012.png', '耒')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/914b.png" class="main-char char-img" alt="酋" title="酋" onclick="showTooltip(event, 'char_images/914b.png', '酋')">
+                            <span class="small-code">q</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/738b.png" class="main-char char-img" alt="王" title="王" onclick="showTooltip(event, 'char_images/738b.png', '王')">
+                            <img src="/char_images/e102.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e102.png', '噩字框')">
+                            <span class="small-code">w</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/8c61.png" class="main-char char-img" alt="象" title="象" onclick="showTooltip(event, 'char_images/8c61.png', '象')">
+                            <span class="small-code">x</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/96b9.png" class="main-char char-img" alt="隹" title="隹" onclick="showTooltip(event, 'char_images/96b9.png', '隹，示例“推、催、鹤”')">
+                            <span class="small-code">i</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">.</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/81f3.png" class="main-char char-img" alt="至" title="至" onclick="showTooltip(event, 'char_images/81f3.png', '至')">
+                            <span class="small-code">i</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/52f9.png" class="main-char char-img" alt="勹" title="勹" onclick="showTooltip(event, 'char_images/52f9.png', '勹，示例“勾、勿”')">
+                            <span class="small-code">k</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/77f3.png" class="main-char char-img" alt="石" title="石" onclick="showTooltip(event, 'char_images/77f3.png', '石')">
+                            <span class="small-code">s</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="key">
+                    <span class="key-label">/</span>
+                    <div class="key-content">
+                        <span class="char-group">
+                            <img src="/char_images/65a4.png" class="main-char char-img" alt="斤" title="斤" onclick="showTooltip(event, 'char_images/65a4.png', '斤')">
+                            <img src="/char_images/e400.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e400.png', '丘无横，示例“兵、岳”')">
+                            <span class="small-code">j</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/53e4.png" class="main-char char-img" alt="古" title="古" onclick="showTooltip(event, 'char_images/53e4.png', '古')">
+                            <span class="small-code">g</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/9a6c.png" class="main-char char-img" alt="马" title="马" onclick="showTooltip(event, 'char_images/9a6c.png', '马')">
+                            <img src="/char_images/e157.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e157.png', '馬无灬')">
+                            <img src="/char_images/99ac.png" class="sub-char char-img" alt="馬" title="馬" onclick="showTooltip(event, 'char_images/99ac.png', '馬')">
+                            <span class="small-code">m</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/4e1a.png" class="main-char char-img" alt="业" title="业" onclick="showTooltip(event, 'char_images/4e1a.png', '业')">
+                            <span class="small-code">y</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/843d.png" class="main-char char-img" alt="落" title="落" onclick="showTooltip(event, 'char_images/843d.png', '落')">
+                            <img src="/char_images/e820.png" class="sub-char char-img" alt="" title="" onclick="showTooltip(event, 'char_images/e820.png', '落字框')">
+                            <span class="small-code">l</span>
+                        </span>
+                        <span class="char-group">
+                            <img src="/char_images/5902.png" class="main-char char-img" alt="夂" title="夂" onclick="showTooltip(event, 'char_images/5902.png', '夂')">
+                            <img src="/char_images/590a.png" class="sub-char char-img" alt="夊" title="夊" onclick="showTooltip(event, 'char_images/590a.png', '夊')">
+                            <span class="small-code">i</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="legend">
+            <span>大字：主字根</span>
+            <span>小字：从属字根</span>
+            <span>红色字母：该组字根的小码</span>
+        </div>
+    </div>
+    
+    <div class="tooltip" id="tooltip">
+        <button class="tooltip-close" onclick="hideTooltip()">×</button>
+        <img class="tooltip-img" id="tooltip-img" src="" alt="">
+        <div class="tooltip-name" id="tooltip-name"></div>
+    </div>
+    
+    <script>
+        const tooltip = document.getElementById('tooltip');
+        const tooltipImg = document.getElementById('tooltip-img');
+        const tooltipName = document.getElementById('tooltip-name');
+        
+        function showTooltip(e, imgPath, name) {
+            tooltipImg.src = imgPath;
+            tooltipName.textContent = name || '';
+            
+            const rect = e.target.getBoundingClientRect();
+            let left = rect.left + rect.width / 2 - 100;
+            let top = rect.bottom + 10;
+            
+            if (left < 10) left = 10;
+            if (left > window.innerWidth - 210) left = window.innerWidth - 210;
+            if (top > window.innerHeight - 200) top = rect.top - 180;
+            
+            tooltip.style.left = left + 'px';
+            tooltip.style.top = top + 'px';
+            tooltip.classList.add('visible');
+            
+            e.stopPropagation();
+        }
+        
+        function hideTooltip() {
+            tooltip.classList.remove('visible');
+        }
+        
+        document.addEventListener('click', function(e) {
+            if (!e.target.classList.contains('char-img')) {
+                hideTooltip();
+            }
+        });
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                hideTooltip();
+            }
+        });
+
+        function sendHeight() {
+            const height = document.body.scrollHeight;
+            window.parent.postMessage({ type: 'zigen-table-height', height: height }, '*');
+        }
+
+        sendHeight();
+        window.addEventListener('resize', sendHeight);
+        window.addEventListener('load', sendHeight);
+    </script>
+</body></html>

@@ -1,0 +1,23 @@
+# Rime dictionary: yoyo
+# encoding: utf-8
+---
+name: yoyo-wx
+version: 1.0
+sort: by_weight
+columns:
+  - text
+  - code
+  - weight
+encoder:
+  rules:
+    - length_equal: 2
+      formula: "AbAcBbBc"
+    - length_equal: 3
+      formula: "AbBbCbCc"
+    - length_in_range: [4, 99]
+      formula: "AbBbCbZb"
+import_tables:
+  - yoyo-bm
+  - yoyo_kf
+  - yoyo_char_kuozhan
+...
