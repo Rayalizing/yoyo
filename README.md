@@ -1,46 +1,62 @@
 ![网站首页](rime/intro.png)
 
 # 麓鸣输入法
+> *呦呦鹿鸣，食野之苹。*
 
-> 麓鸣——一款兼顾极简规则和极致性能的纯形顶功并击输入法。
->
-> 一句话描述：纯形码、字词混打、三码定长、60 码元、双编码（大码乱序，小码音托）、支持 10w 汉字扩展字集、【6638 字全码零重码】、【一击顶功】的中文并击输入方案。
+麓鸣——一款兼顾极简规则和极致性能的纯形顶功并击输入法。
 
-本项目包含麓鸣码（YOYO输入方案）的Rime配置以及用于展示字根映射关系的HTML可视化工具。
+一句话描述：纯形码、字词混打、三码定长、60 码元、双编码（大码乱序，小码音托）、支持 10w 汉字扩展字集、【6638 字全码零重码】、【一击顶功】的中文并击输入方案。
+
+本项目包含麓鸣（YoYo）输入方案的 Rime 配置以及用于展示和练习字根的 HTML 可视化工具。
 
 ## 项目结构
 
 ```
-├── rime/                          # Rime输入方案配置目录
-│   ├── yoyo.schema.yaml          # 麓鸣码主配置文件
-│   ├── yoyo-wx.schema.yaml       # 五笔版配置
-│   ├── yoyo-bm.schema.yaml       # 编码版配置
-│   ├── yoyo-practice.schema.yaml # 练习版配置
-│   ├── yoyo-wx.dict.yaml         # 五笔版词库
-│   ├── yoyo-bm.dict.yaml         # 编码版词库
-│   ├── yoyo_kf.dict.yaml         # 开放词库
-│   ├── yoyo_char_kuozhan.dict.yaml # 字符扩展词库
-│   ├── yoyo.yaml                 # Rime方案列表配置
-│   └── lua/yoyo/                 # Lua脚本
-│       ├── yoyo.lua              # 核心逻辑
-│       ├── popping.lua           # 弹窗逻辑
-│       └── commit_raw.lua        # 提交原始编码
-│
-├── zigen_table/                   # 字根表生成工具
-│   ├── mapping.yaml              # 字根与大码小码映射
-│   ├── yoyo-chai.yaml            # Chai字体配置
-│   ├── generate_html.py          # 生成HTML页面
-│   ├── merge_mapping.py          # 合并映射
-│   ├── fix_with_substitute.py    # 修正替代
-│   ├── generate_char_images.py   # 生成字符图片
-│   ├── char_images/              # 字符图片目录
-│   ├── NotoSerifSC-Medium.otf    # 思源宋体
-│   └── ChaiPUA-0.2.7.ttf         # Chai字体
-│
-└── luming-input_full_website/    # 前端展示网站
-    └── client/
-        └── public/
-            └── char_images/      # 字根图片
+yoyo-input/                         # 麓鸣输入法项目
+ ├── README.md                      # 项目说明文档
+ │
+ ├── rime/                          # Rime输入方案配置目录
+ │   ├── yoyo.yaml                  # 麓鸣码主配置文件
+ │   ├── yoyo-bm.schema.yaml        # 北冥版配置
+ │   ├── yoyo-bm.dict.yaml          # 北冥版词库
+ │   ├── yoyo-wx.schema.yaml        # 无相版配置
+ │   ├── yoyo-wx.dict.yaml          # 无相版词库
+ │   ├── yoyo-practice.schema.yaml  # 练习版配置（用于结合练习工具练码元和字根）
+ │   ├── yoyo-practice.dict.yaml    # 练习版词库
+ │   ├── yoyo_kf.dict.yaml          # 快符词库（打符号用）
+ │   ├── yoyo_char_kuozhan.dict.yaml # 扩展字库
+ │   └── lua/yoyo/                  # Lua脚本目录
+ │       ├── yoyo.lua               # 核心类定义
+ │       ├── popping.lua            # 实现顶功逻辑
+ │       └── commit_raw.lua         # 实现ctrl提交纯编码
+ │
+ ├── zigen_table/                   # 字根表生成和展示（生成HTML字根表页面）
+ │   ├── mapping.yaml               # 字根与大码小码映射配置
+ │   ├── yoyo-chai.yaml             # Chai字体配置
+ │   ├── generate_html.py           # 生成HTML字根表页面
+ │   ├── merge_mapping.py           # 合并字根映射
+ │   ├── fix_with_substitute.py     # 字体替代修正
+ │   ├── generate_char_images.py    # 生成字根图片
+ │   ├── char_images/               # 字根图片目录（~500+png）
+ │   ├── NotoSerifSC-Medium.otf    # 思源宋体（生成字根图片用）
+ │   └── ChaiPUA-0.2.7.ttf         # Chai专用字体（生成字根图片用）
+ │
+ ├── practice_tool/                 # 字根练习工具
+ │   ├── practice.html              # 练习页面主入口
+ │   ├── style.css                  # 样式文件
+ │   ├── base_practice.js           # 基础练习逻辑
+ │   ├── memory_logic.js            # 记忆算法
+ │   ├── state_manager.js           # 状态管理
+ │   ├── ui_updater.js              # UI更新逻辑
+ │   ├── input_handler.js           # 输入处理
+ │   ├── utils.js                   # 工具函数
+ │   ├── zigen_data_module.js       # 字根数据模块
+ │   ├── generate_practice.py       # 生成练习数据
+ │   ├── generate_zigen_data.py     # 生成字根数据
+ │   └── mapping.yaml               # 字根映射配置
+ │
+ └── luming-input_full_website/     # 麓鸣介绍网站（结合了字根表和练习工具）
+
 ```
 
 ## 「麓（lù）鸣」的优势：
@@ -54,7 +70,7 @@
     - 一击顶功——继承并击独特的顶功优势，单字无需空格即可上屏。
 2. 极低重码：
 
-    - 单字前6638字【全码无重】！简码和全码都是零重码。
+    - 单字前6638字【全码无重】！简码和全码都是零重码（6638字指GB2312和《通用规范汉字表》收录字符的交集）。
     - 前 60000 高频词，加权重码率只有【0.25%】！
     - 一击词和一击字打法不同，所以编码无重叠。
 3. 思维负担低：
@@ -243,16 +259,25 @@
 
 ## 字根表
 
-清晰版在[yoyo-字根表.pdf](rime/yoyo-字根表.pdf)，或通过部署网站查看（点击各字根可查看详细解释）
+清晰版在[yoyo-字根表.pdf](rime/yoyo-字根表.pdf)，或浏览器打开[这个html](zigen_table/zigen_table.html)（点击各字根可查看详细解释）
 ![字根表](rime/zigen.png)
 
 ## 如何使用
 进入[Rime官网](https://rime.im/)下载rime输入法 → 在用户目录下复制粘贴[rime文件夹](rime/)中的所有内容 → 重新部署即可使用。
 
-## 字根练习工具使用
+## 字根练习工具
 
 将本仓库克隆到本地 → 进入[practice_tool](practice_tool/)目录 → 用浏览器打开[practice.html](practice_tool/practice.html) → 按照提示操作，即可练习字根
 
 ## 网站部署和查看
 [luming-input_full_website](luming-input_full_website/)是该输入法的介绍网站，用于展示麓鸣输入法的相关内容。
 其docs目录下的[README](luming-input_full_website/docs/README_How_to_deploy.md)包含了网站部署的详细方法。
+
+## 致谢
+本方案产生自：[汉字自动拆分系统](https://chaifen.app/)
+
+思路和字根参考：
+  - [顶功·集萃](https://ding.tansongchen.com/)
+  - [虎码](https://www.tiger-code.com/)
+  - 汉字自动拆分系统开发群（群号627379895）
+  - 并击交流群 - 并击並擊（群号374971723）
