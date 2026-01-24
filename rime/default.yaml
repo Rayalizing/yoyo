@@ -1,0 +1,26 @@
+# Rime default settings
+# encoding: utf-8
+
+
+# 要比共享目录的同名文件的 config_version 大才可以生效
+config_version: '2025-12-15'
+
+
+# 方案列表
+schema_list:
+  - schema: yoyo-bm
+  - schema: yoyo-wx
+  - schema: yoyo-practice
+
+# 菜单
+menu:
+  page_size: 6  # 候选词个数
+  alternative_select_labels: [ ⒈, ⒉, ⒊, ⒋, ⒌, ⒍, ⒎, ⒏, ⒐, ⒑, ⒒, ⒓, ⒔, ⒕, ⒖, ⒗, ⒘, ⒙, ⒚, ⒛ ]  # 修改候选项标签
+
+
+# 方案选单相关
+switcher:
+  caption: 「方案选单」
+  hotkeys:
+    - Control+Tab
+    - Alt+grave
