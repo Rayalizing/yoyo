@@ -147,14 +147,21 @@ class MemoryLogic {
      * @returns {number} 下一个间隔位置
      */
     getNextInterval(correctCount, isBaseMode = true) {
+        const progressList = this.getCurrentProgressList();
+        if (progressList.length === 0) {
+            return 0;
+        }
+        
         if (isBaseMode) {
             // 基础模式的间隔映射表
-            return correctCount >= 8 ? this.progressList.length - 1 : 
-                {0: 2, 1: 4, 2: 8, 3: 12, 4: 20, 5: 30, 6: 60, 7: 100}[correctCount];
+            const intervals = {0: 2, 1: 4, 2: 8, 3: 12, 4: 20, 5: 40, 6: 60, 7: 100};
+            const nextPosition = intervals[correctCount] || progressList.length - 1;
+            return Math.min(nextPosition, progressList.length - 1);
         } else {
             // 高级模式的间隔映射表
-            return correctCount >= 7 ? this.progressList.length - 1 : 
-                {0: 2, 1: 4, 2: 8, 3: 12, 4: 20, 5: 60, 6: 100}[correctCount];
+            const intervals = {0: 2, 1: 4, 2: 8, 3: 12, 4: 20, 5: 60, 6: 100};
+            const nextPosition = intervals[correctCount] || progressList.length - 1;
+            return Math.min(nextPosition, progressList.length - 1);
         }
     }
     
