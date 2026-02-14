@@ -5,14 +5,14 @@ import sys
 import os
 import re
 from collections import defaultdict
-from ref_mayuan import set_mono, set_roman, set_bold_italic, set_shuangxian, set_bold
+from ref_mayuan import bold, mono, sans_serif, bold_italic, bold_sans_italic
 
 # 配置：
-first_set = set_bold  # -x (三码左)
-second_set = set_shuangxian  # [xy]
-third_set = set_bold_italic  # =x (三码右)
-fourth_set = set_mono  # _x （一简左）
-fifth_set = set_roman  # +x （一简右）
+first_set = bold  # -x (三码左)
+second_set = mono  # [xy]
+third_set = sans_serif  # =x (三码右)
+fourth_set = bold_italic  # _x （一简左）
+fifth_set = bold_sans_italic  # +x （一简右）
 
 
 def replace_code_element(code):
@@ -156,5 +156,6 @@ if __name__ == '__main__':
         print(f"错误：输入文件不存在: {input_file}", file=sys.stderr)
         sys.exit(1)
     
-    # convert_dazhu_table(input_file, output_file)
-    convert_ceping_table(input_file, output_file)
+    convert_dazhu_table(input_file, output_file)
+    # convert_ceping_table(input_file, output_file)
+    print(f"{convert_dazhu_table.__name__}运行完成！")
