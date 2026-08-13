@@ -14,6 +14,8 @@ A_SLOTS 是 A 位的完整真相：未写出的前缀视为该槽留空，原占
 
 from __future__ import annotations
 
+from typing import Dict
+
 from dict_model import (
     CODECS,
     KEY_ORDER,
@@ -50,7 +52,7 @@ A_SLOTS: dict[str, dict[str, str]] = {
     "bA": {"_": "而", "+": "所以", "<": "而且", ">": "安全"},
 }
 
-World = dict[Codec, Store]
+World = Dict[Codec, Store]
 
 
 def check_plan() -> None:

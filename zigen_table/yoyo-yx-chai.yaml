@@ -1,0 +1,2953 @@
+version: '0.2'
+source: huma
+info:
+  name: 260406-麓鸣字根-best-字词优化
+  author: Rayalizing
+  version: 04-06+10_38_30
+  description: |-
+    为一简字固定了一键式排布
+    十S → e
+    日o → w
+    了高p → s
+    和卜F → x
+    文又J → v
+    亻j → a
+    丿西D → t
+    口K → b
+    也y → z
+    者用k → q
+data:
+  character_set: general
+  repertoire:
+    :
+      unicode: 61442
+      tygf: 0
+      gb2312: 0
+      name: 段字旁无横
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, source: , strokes: [{feature: reference, index: 0}, {feature: reference, index: 1}, {feature: reference, index: 2}, {feature: reference, index: 3}]}]
+      ambiguous: false
+    :
+      unicode: 61445
+      tygf: 0
+      gb2312: 0
+      name: 丈框不出头
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, tags: [丈框], source: , strokes: [{feature: reference, index: 0}, {feature: 撇, start: [50, 27], curveList: [{command: c, parameterList: [0, 23, 3, 44, -23, 59]}]}, {feature: reference, index: 2}]}]
+      ambiguous: false
+    :
+      unicode: 61441
+      tygf: 0
+      gb2312: 0
+      name: 寒字腰无横
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, source: , strokes: [{feature: reference, index: 0}, {feature: reference, index: 1}, {feature: reference, index: 2}, {feature: reference, index: 3}]}]
+      ambiguous: false
+    :
+      unicode: 61440
+      tygf: 0
+      gb2312: 0
+      name: 事字底
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, source: 事, strokes: [{feature: reference, index: 4}, {feature: reference, index: 5}, {feature: reference, index: 6}, {feature: reference, index: 7}]}]
+      ambiguous: false
+    :
+      unicode: 61443
+      tygf: 0
+      gb2312: 0
+      name: 丈框
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, tags: [丈框], source: 丈, strokes: [{feature: 横, start: [32, 27], curveList: [{command: h, parameterList: [36]}]}, {feature: reference, index: 1}, {feature: reference, index: 2}]}]
+      ambiguous: false
+    :
+      unicode: 61444
+      tygf: 0
+      gb2312: 0
+      name: 乑无撇
+      gf0014_id: null
+      gf3001_id: null
+      glyphs: [{type: derived_component, source: 乑, strokes: [{feature: reference, index: 1}, {feature: reference, index: 2}, {feature: reference, index: 3}, {feature: reference, index: 4}, {feature: reference, index: 5}]}]
+      ambiguous: false
+  transformers:
+    - from: {operator: ⿲, operandList: [, {id: 1}, 辛]}
+      to: {operator: ⿴, operandList: [辡, {id: 1}]}
+    - from: {operator: ⿲, operandList: [王, {id: 1}, 王]}
+      to: {operator: ⿴, operandList: [玨, {id: 1}]}
+    - from: {operator: ⿲, operandList: [弓, {id: 1}, 弓]}
+      to: {operator: ⿴, operandList: [弜, {id: 1}]}
+    - from: {operator: ⿱, operandList: [吂, {operator: ⿲, operandList: [月, {id: 1}, 凡]}]}
+      to: {operator: ⿵, operandList: [, {id: 1}]}
+    - from: {operator: ⿲, operandList: [彳, {operator: ⿱, operandList: [, {id: 1}]}, 攵]}
+      to: {operator: ⿵, operandList: [, {id: 1}]}
+    - from: {operator: ⿲, operandList: [彳, {operator: ⿱, operandList: [山, {id: 1}]}, 攵]}
+      to: {operator: ⿵, operandList: [, {id: 1}]}
+    - from: {operator: ⿱, operandList: [艹, {operator: ⿰, operandList: [氵, {id: 1}]}]}
+      to: {operator: ⿸, operandList: [, {id: 1}]}
+analysis:
+  classifier:
+    横折弯钩: 6
+  degenerator:
+    feature:
+      提: 横
+      捺: 点
+    no_cross: false
+  selector:
+    - 结构完整
+    - 根少优先
+    - 能连不交
+    - 能散不连
+    - 全符笔顺
+    - 取大优先
+  customize:
+    甩:
+      - 用
+      - '5'
+    我:
+      - '3'
+      - 扌
+      - 戈
+    :
+      - 禾
+      - 戈
+    重:
+      - 千
+      - 里
+    勿:
+      - 勹
+      - 
+    更:
+      - 
+      - 日
+    亓:
+      - 二
+      - 
+    果:
+      - 田
+      - 木
+    主:
+      - '4'
+      - 王
+    戋:
+      - '1'
+      - 戈
+    :
+      - 大
+      - 丷
+    :
+      - 土
+      - 丷
+    严:
+      - '1'
+      - 
+      - 厂
+    :
+      - 耳
+      - 戈
+    :
+      - 田
+      - 十
+    :
+      - 牛
+      - 巾
+    产:
+      - 
+      - 厂
+    :
+      - '1'
+      - 日
+      - 
+    禺:
+      - 田
+      - 
+    :
+      - 肀
+      - 
+    凹:
+      - 
+      - '1'
+    垂:
+      - 千
+      - 艹
+      - 士
+  dynamic: true
+form:
+  alphabet: ABCDEFGHIJKLabcdefgqrstvwxz
+  mapping_type: 2
+  mapping:
+    '1':
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-eng, index: 0}
+    '2':
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    '3':
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-ie, index: 0}
+    '4':
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    '5':
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    '6':
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    双拼韵母-ui: F
+    双拼韵母-an: H
+    双拼韵母-iong: B
+    双拼声母-ch: e
+    双拼声母-zh: d
+    双拼声母-d: a
+    双拼声母-q: t
+    双拼韵母-ai: J
+    双拼声母-h: c
+    双拼韵母-ang: C
+    双拼韵母-uai: G
+    双拼声母-r: a
+    双拼韵母-iu: J
+    双拼声母-m: e
+    双拼声母-j: x
+    双拼韵母-in: H
+    双拼韵母-a: G
+    双拼韵母-ong: A
+    双拼韵母-ng: I
+    双拼韵母-uang: J
+    双拼韵母-o: A
+    双拼声母-b: q
+    双拼韵母-ing: L
+    双拼韵母-ei: F
+    双拼声母-t: s
+    双拼韵母-ao: D
+    双拼韵母-m: B
+    双拼声母-l: f
+    双拼韵母-ian: D
+    双拼韵母-ia: C
+    双拼韵母-uan: B
+    双拼声母-z: t
+    双拼韵母-iao: A
+    双拼韵母-en: I
+    双拼韵母-i: E
+    双拼声母-f: r
+    双拼声母-c: g
+    双拼韵母-un: A
+    双拼韵母-ue: G
+    双拼声母-w: g
+    双拼韵母-iang: G
+    双拼韵母-ua: C
+    双拼韵母-er: B
+    双拼韵母-ie: I
+    双拼声母-n: d
+    双拼声母-k: x
+    双拼声母-p: w
+    双拼声母-sh: w
+    双拼韵母-eng: B
+    双拼韵母-ou: K
+    双拼韵母-u: K
+    双拼韵母-uo: I
+    双拼韵母-ve: C
+    双拼声母-0: b
+    双拼声母-s: b
+    双拼韵母-e: L
+    双拼韵母-v: B
+    双拼声母-x: r
+    双拼声母-g: z
+    双拼声母-y: v
+    毛:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ui, index: 0}
+    占:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    隹:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-ui, index: 0}
+    亻:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    匕:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-iong, index: 0}
+    歹:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    亥:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    夫:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    丈:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    厂:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    古:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    业:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    付:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    石:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    丩:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-iu, index: 0}
+    臼:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-iu, index: 0}
+    父:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    今:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    皿:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    麻:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    大:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    乍:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    束:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    巾:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    虫:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    黄:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-uang, index: 0}
+    氏:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    白:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    卜:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-o, index: 0}
+    巴:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    冫:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    丁:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    井:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    食:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    光:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    疒:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    黑:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    兔:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    贝:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    :
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    同:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    弓:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    刀:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    及:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    勹:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    爪:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    刂:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    卯:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    耒:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    劳:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    六:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-iu, index: 0}
+    千:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    龙:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    见:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    里:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    面:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    臣:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    欠:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    电:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    雨:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    宀:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    人:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    夕:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    田:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    十:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ia, index: 0}
+    甲:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ia, index: 0}
+    川:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    犬:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    卵:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    载:
+      - {element: 双拼声母-z, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    :
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    月:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    角:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    民:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    金:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    门:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    直:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    七:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    习:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    壬:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    又:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    户:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    本:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    非:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    予:
+      - {element: 双拼声母-z, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    其:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    辟:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    执:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    聿:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    之:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    日:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    米:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    彐:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    衣:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    自:
+      - {element: 双拼声母-z, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    乂:
+      - {element: 双拼声母-b, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    冖:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    彳:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    夂:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    立:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    吉:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    分:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    方:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    飞:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    攵:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    示:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    艹:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    尸:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    支:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    仑:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-un, index: 0}
+    寸:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-un, index: 0}
+    矛:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-un, index: 0}
+    亡:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    文:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    页:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    瓦:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    鱼:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    韦:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    己:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    两:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-iang, index: 0}
+    且:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ie, index: 0}
+    卩:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-ie, index: 0}
+    耳:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ie, index: 0}
+    廿:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    马:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    内:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    牛:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-iu, index: 0}
+    乃:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    鸟:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    气:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    㐄:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-ua, index: 0}
+    囗:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-uang, index: 0}
+    戈:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    片:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    合:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    丬:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    疋:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    弋:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    皮:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    儿:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-o, index: 0}
+    长:
+      - {element: 双拼声母-p, index: 0}
+      - {element: 双拼韵母-o, index: 0}
+    双:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-uang, index: 0}
+    水:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-ui, index: 0}
+    彡:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    身:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    尚:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    :
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    山:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    豕:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    生:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-eng, index: 0}
+    丰:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-eng, index: 0}
+    殳:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    口:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    由:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    舟:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    乡:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    手:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    斗:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    缶:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    亠:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    走:
+      - {element: 双拼声母-z, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    戊:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    五:
+      - {element: 双拼声母-w, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    入:
+      - {element: 双拼声母-r, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    虎:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    干:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    亍:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    鹿:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    竹:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    母:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    土:
+      - {element: 双拼声母-t, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    足:
+      - {element: 双拼声母-z, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    豆:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    无:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    毋:
+      - {element: 双拼声母-m, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    鼠:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    甫:
+      - {element: 双拼声母-d, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    弗:
+      - {element: 双拼声母-f, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    火:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-uo, index: 0}
+    落:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-uo, index: 0}
+    辶:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-uo, index: 0}
+    斤:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-ve, index: 0}
+    未:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    已:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ei, index: 0}
+    爱:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    矢:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    木:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    子:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-er, index: 0}
+    二:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-er, index: 0}
+    鬼:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    尤:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    不:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    几:
+      - {element: 双拼声母-0, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    林:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    言:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    糸:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    巳:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    卅:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    止:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    力:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    三:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    厶:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    氵:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    比:
+      - {element: 双拼声母-s, index: 0}
+      - {element: 双拼韵母-ai, index: 0}
+    可:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    者:
+      - {element: 双拼声母-zh, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    而:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    八:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    目:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    谷:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    车:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    禾:
+      - {element: 双拼声母-h, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    屮:
+      - {element: 双拼声母-ch, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    了:
+      - {element: 双拼声母-l, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    册:
+      - {element: 双拼声母-c, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    九:
+      - {element: 双拼声母-k, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    舌:
+      - {element: 双拼声母-sh, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    䀠:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    女:
+      - {element: 双拼声母-n, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    句:
+      - {element: 双拼声母-j, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    曲:
+      - {element: 双拼声母-q, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    行:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-ing, index: 0}
+    吅:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    西:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    :
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-iang, index: 0}
+    祭:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-ian, index: 0}
+    穴:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-ve, index: 0}
+    心:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-iao, index: 0}
+    辛:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    乌:
+      - {element: 双拼声母-x, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    圭:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-ui, index: 0}
+    高:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    鬲:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    广:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-uang, index: 0}
+    甘:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-an, index: 0}
+    工:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    骨:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-u, index: 0}
+    艮:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-en, index: 0}
+    士:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    王:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-uo, index: 0}
+    毌:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    关:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-uan, index: 0}
+    革:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    瓜:
+      - {element: 双拼声母-g, index: 0}
+      - {element: 双拼韵母-ua, index: 0}
+    羽:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-v, index: 0}
+    至:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    音:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    也:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    廴:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-in, index: 0}
+    亦:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-i, index: 0}
+    云:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-un, index: 0}
+    四:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-e, index: 0}
+    羊:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ang, index: 0}
+    牙:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-a, index: 0}
+    曰:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ve, index: 0}
+    用:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ong, index: 0}
+    幺:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ao, index: 0}
+    小:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    酉:
+      - {element: 双拼声母-y, index: 0}
+      - {element: 双拼韵母-ou, index: 0}
+    :
+      element: 匕
+    :
+      element: 匕
+    :
+      element: 匕
+    :
+      element: 歹
+    歺:
+      element: 歹
+    :
+      element: 丈
+    :
+      element: 丈
+    :
+      element: 厂
+    :
+      element: 业
+    :
+      element: 业
+    匚:
+      element: 丩
+    :
+      element: 丩
+    :
+      element: 丩
+    :
+      element: 丩
+    :
+      element: 丩
+    :
+      element: 臼
+    亽:
+      element: 今
+    :
+      element: 大
+    :
+      element: 虫
+    :
+      element: 黄
+    :
+      element: 卜
+    :
+      element: 冫
+    :
+      element: 冫
+    :
+      element: 井
+    :
+      element: 井
+    饣:
+      element: 食
+    飠:
+      element: 食
+    :
+      element: 黑
+    :
+      element: 黑
+    :
+      element: 兔
+    :
+      element: 同
+    :
+      element: 同
+    冂:
+      element: 同
+    凵:
+      element: 同
+    :
+      element: 同
+    :
+      element: 刀
+    :
+      element: 刀
+    爫:
+      element: 爪
+    :
+      element: 刂
+    :
+      element: 刂
+    :
+      element: 刂
+    :
+      element: 刂
+    :
+      element: 卯
+    :
+      element: 劳
+    󲰪:
+      element: 劳
+    :
+      element: 臣
+    :
+      element: 电
+    :
+      element: 电
+    :
+      element: 雨
+    :
+      element: 人
+    :
+      element: 十
+    :
+      element: 十
+    :
+      element: 川
+    巜:
+      element: 川
+    :
+      element: 川
+    巛:
+      element: 川
+    豸:
+      element: 犬
+    犭:
+      element: 犬
+    :
+      element: 载
+    :
+      element: 
+    :
+      element: 
+    :
+      element: 
+    :
+      element: 月
+    :
+      element: 月
+    :
+      element: 月
+    :
+      element: 月
+    :
+      element: 角
+    :
+      element: 角
+    :
+      element: 角
+    釒:
+      element: 金
+    钅:
+      element: 金
+    :
+      element: 金
+    龺:
+      element: 直
+    :
+      element: 七
+    𡈼:
+      element: 壬
+    :
+      element: 又
+    戶:
+      element: 户
+    :
+      element: 其
+    :
+      element: 聿
+    :
+      element: 聿
+    :
+      element: 聿
+    肀:
+      element: 聿
+    :
+      element: 聿
+    :
+      element: 日
+    :
+      element: 日
+    :
+      element: 米
+    彑:
+      element: 彐
+    :
+      element: 彐
+    :
+      element: 彐
+    :
+      element: 衣
+    衤:
+      element: 衣
+    :
+      element: 衣
+    :
+      element: 衣
+    :
+      element: 衣
+    㐅:
+      element: 乂
+    :
+      element: 彳
+    :
+      element: 彳
+    :
+      element: 彳
+    夊:
+      element: 夂
+    :
+      element: 立
+    :
+      element: 吉
+    攴:
+      element: 攵
+    礻:
+      element: 示
+    尢:
+      element: 艹
+    卝:
+      element: 艹
+    廾:
+      element: 艹
+    丌:
+      element: 艹
+    艸:
+      element: 艹
+    :
+      element: 尸
+    :
+      element: 尸
+    侖:
+      element: 仑
+    亾:
+      element: 亡
+    兦:
+      element: 亡
+    :
+      element: 页
+    :
+      element: 页
+    :
+      element: 页
+    魚:
+      element: 鱼
+    韋:
+      element: 韦
+    :
+      element: 卩
+    㔾:
+      element: 卩
+    阝:
+      element: 卩
+    :
+      element: 卩
+    龷:
+      element: 廿
+    :
+      element: 马
+    馬:
+      element: 马
+    禸:
+      element: 内
+    :
+      element: 内
+    牜:
+      element: 牛
+    :
+      element: 牛
+    :
+      element: 乃
+    :
+      element: 鸟
+    :
+      element: 鸟
+    鳥:
+      element: 鸟
+    :
+      element: 㐄
+    :
+      element: 戈
+    亼:
+      element: 合
+    :
+      element: 丬
+    爿:
+      element: 丬
+    :
+      element: 丬
+    :
+      element: 丬
+    :
+      element: 疋
+    :
+      element: 疋
+    :
+      element: 疋
+    :
+      element: 儿
+    髟:
+      element: 长
+    镸:
+      element: 长
+    長:
+      element: 长
+    㕛:
+      element: 双
+    :
+      element: 水
+    氺:
+      element: 水
+    :
+      element: 水
+    :
+      element: 水
+    :
+      element: 水
+    :
+      element: 彡
+    㐆:
+      element: 身
+    :
+      element: 尚
+    龸:
+      element: 尚
+    :
+      element: 尚
+    :
+      element: 
+    :
+      element: 豕
+    :
+      element: 丰
+    龶:
+      element: 丰
+    :
+      element: 丰
+    龵:
+      element: 手
+    扌:
+      element: 手
+    :
+      element: 手
+    :
+      element: 手
+    :
+      element: 手
+    鬥:
+      element: 斗
+    :
+      element: 缶
+    :
+      element: 戊
+    戉:
+      element: 戊
+    :
+      element: 虎
+    虍:
+      element: 虎
+    :
+      element: 鹿
+    :
+      element: 鹿
+    :
+      element: 竹
+    :
+      element: 竹
+    :
+      element: 土
+    :
+      element: 足
+    無:
+      element: 无
+    旡:
+      element: 无
+    :
+      element: 鼠
+    :
+      element: 鼠
+    :
+      element: 弗
+    灬:
+      element: 火
+    :
+      element: 落
+    :
+      element: 斤
+    :
+      element: 爱
+    朩:
+      element: 木
+    :
+      element: 木
+    :
+      element: 几
+    讠:
+      element: 言
+    纟:
+      element: 糸
+    糹:
+      element: 糸
+    :
+      element: 卅
+    卌:
+      element: 卅
+    :
+      element: 止
+    :
+      element: 止
+    :
+      element: 止
+    龰:
+      element: 止
+    :
+      element: 力
+    :
+      element: 厶
+    龴:
+      element: 厶
+    :
+      element: 氵
+    :
+      element: 比
+    耂:
+      element: 者
+    :
+      element: 八
+    䒑:
+      element: 八
+    :
+      element: 八
+    丷:
+      element: 八
+    :
+      element: 目
+    :
+      element: 谷
+    :
+      element: 车
+    車:
+      element: 车
+    :
+      element: 禾
+    :
+      element: 禾
+    :
+      element: 屮
+    :
+      element: 屮
+    䶹:
+      element: 屮
+    :
+      element: 册
+    :
+      element: 册
+    :
+      element: 舌
+    󰀰:
+      element: 䀠
+    󳏦:
+      element: 䀠
+    :
+      element: 䀠
+    :
+      element: 曲
+    㠯:
+      element: 吅
+    覀:
+      element: 西
+    癶:
+      element: 祭
+    :
+      element: 祭
+    忄:
+      element: 心
+    :
+      element: 心
+    :
+      element: 辛
+    :
+      element: 乌
+    烏:
+      element: 乌
+    :
+      element: 圭
+    :
+      element: 圭
+    :
+      element: 高
+    :
+      element: 高
+    :
+      element: 高
+    冎:
+      element: 骨
+    :
+      element: 艮
+    :
+      element: 王
+    龹:
+      element: 关
+    :
+      element: 亦
+    :
+      element: 亦
+    :
+      element: 亦
+    :
+      element: 云
+    罒:
+      element: 四
+    :
+      element: 羊
+    :
+      element: 羊
+    :
+      element: 羊
+    :
+      element: 用
+    :
+      element: 小
+    :
+      element: 小
+    :
+      element: 小
+  mapping_space:
+    '1':
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-eng, index: 0}], score: 0}
+    '2':
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    '3':
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-ie, index: 0}], score: 0}
+    '4':
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    '5':
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    '6':
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    :
+      - {value: {element: 曲}, score: 0}
+      - {value: null, score: 0}
+    齐:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    各:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    酋:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-iu, index: 0}], score: 0}
+      - {value: null, score: 0}
+    辰:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+      - {value: null, score: 0}
+    麻:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+      - {value: null, score: 0}
+    布:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+      - {value: null, score: 0}
+    辟:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    执:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    壴:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+      - {value: null, score: 0}
+    羽:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+      - {value: null, score: 0}
+    䒤:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-uo, index: 0}], score: 0}
+      - {value: null, score: 0}
+    耒:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+      - {value: null, score: 0}
+    次:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    㕛:
+      - {value: {element: 双}, score: 0}
+      - {value: null, score: 0, condition: [{element: 双, op: 是, value: null}]}
+    双:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-uang, index: 0}], score: 0}
+      - {value: null, score: 0}
+    㡀:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    分:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+      - {value: null, score: 0}
+    殳:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+      - {value: null, score: 0}
+    象:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-iang, index: 0}], score: 0}
+      - {value: null, score: 0}
+    行:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+      - {value: null, score: 0}
+    至:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+      - {value: null, score: 0}
+    䀠:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+      - {value: null, score: 0}
+    󰀰:
+      - {value: {element: 䀠}, score: 0}
+      - {value: null, score: 0, condition: [{element: 䀠, op: 是, value: null}]}
+    󳏦:
+      - {value: {element: 䀠}, score: 0}
+      - {value: null, score: 0, condition: [{element: 䀠, op: 是, value: null}]}
+    :
+      - {value: {element: 䀠}, score: 0}
+      - {value: null, score: 0, condition: [{element: 䀠, op: 是, value: null}]}
+    圭:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-ui, index: 0}], score: 0}
+      - {value: null, score: 0}
+    :
+      - {value: {element: 圭}, score: 0}
+      - {value: null, score: 0, condition: [{element: 圭, op: 是, value: null}]}
+    :
+      - {value: {element: 圭}, score: 0}
+      - {value: null, score: 0, condition: [{element: 圭, op: 是, value: null}]}
+    炎:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+      - {value: null, score: 0}
+    炏:
+      - {value: {element: 炎}, score: 0}
+      - {value: null, score: 0, condition: [{element: 炎, op: 是, value: null}]}
+    吅:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+      - {value: null, score: 0}
+    㠯:
+      - {value: {element: 吅}, score: 0}
+      - {value: null, score: 0, condition: [{element: 吅, op: 是, value: null}]}
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0, condition: [{element: 吅, op: 是, value: null}]}
+    林:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+      - {value: null, score: 0}
+    从:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+      - {value: null, score: 0}
+    󰇺:
+      - {value: {element: 从}, score: 0}
+      - {value: null, score: 0, condition: [{element: 从, op: 是, value: null}]}
+    󰀱:
+      - {value: {element: 从}, score: 0}
+      - {value: null, score: 0, condition: [{element: 从, op: 是, value: null}]}
+    仌:
+      - {value: {element: 从}, score: 0}
+      - {value: null, score: 0, condition: [{element: 从, op: 是, value: null}]}
+    󰃌:
+      - {value: {element: 从}, score: 0}
+      - {value: null, score: 0, condition: [{element: 从, op: 是, value: null}]}
+    :
+      - {value: {element: 从}, score: 0}
+      - {value: null, score: 0, condition: [{element: 从, op: 是, value: null}]}
+    齿:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+      - {value: null, score: 0}
+    齒:
+      - {value: {element: 齿}, score: 0}
+      - {value: null, score: 0, condition: [{element: 齿, op: 是, value: null}]}
+    音:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+      - {value: null, score: 0}
+    双拼韵母-ui:
+      - {value: L, score: 0}
+    双拼韵母-an:
+      - {value: F, score: 0}
+    双拼韵母-iong:
+      - {value: G, score: 0}
+    双拼声母-ch:
+      - {value: d, score: 0}
+    双拼声母-zh:
+      - {value: w, score: 0}
+    双拼声母-d:
+      - {value: a, score: 0}
+    双拼声母-q:
+      - {value: c, score: 0}
+    双拼韵母-ai:
+      - {value: B, score: 0}
+    双拼声母-h:
+      - {value: c, score: 0}
+    双拼韵母-ang:
+      - {value: E, score: 0}
+    双拼韵母-uai:
+      - {value: I, score: 0}
+    双拼声母-r:
+      - {value: r, score: 0}
+    双拼韵母-iu:
+      - {value: C, score: 0}
+    双拼声母-m:
+      - {value: e, score: 0}
+    双拼声母-j:
+      - {value: z, score: 0}
+    双拼韵母-in:
+      - {value: B, score: 0}
+    双拼韵母-a:
+      - {value: C, score: 0}
+    双拼韵母-ong:
+      - {value: D, score: 0}
+    双拼韵母-ng:
+      - {value: E, score: 0}
+    双拼韵母-uang:
+      - {value: L, score: 0}
+    双拼韵母-o:
+      - {value: E, score: 0}
+    双拼声母-b:
+      - {value: q, score: 0}
+    双拼韵母-ei:
+      - {value: F, score: 0}
+    双拼韵母-ing:
+      - {value: L, score: 0}
+    双拼声母-t:
+      - {value: s, score: 0}
+    双拼韵母-ao:
+      - {value: H, score: 0}
+    双拼韵母-m:
+      - {value: L, score: 0}
+    双拼声母-l:
+      - {value: f, score: 0}
+    双拼韵母-ian:
+      - {value: E, score: 0}
+    双拼韵母-ia:
+      - {value: F, score: 0}
+    双拼声母-z:
+      - {value: t, score: 0}
+    双拼韵母-uan:
+      - {value: G, score: 0}
+    双拼韵母-iao:
+      - {value: F, score: 0}
+    双拼韵母-en:
+      - {value: I, score: 0}
+    双拼韵母-i:
+      - {value: J, score: 0}
+    双拼声母-f:
+      - {value: r, score: 0}
+    双拼声母-c:
+      - {value: g, score: 0}
+    双拼韵母-un:
+      - {value: B, score: 0}
+    双拼韵母-ue:
+      - {value: L, score: 0}
+    双拼声母-w:
+      - {value: x, score: 0}
+    双拼韵母-iang:
+      - {value: C, score: 0}
+    双拼韵母-ua:
+      - {value: H, score: 0}
+    双拼韵母-er:
+      - {value: G, score: 0}
+    双拼韵母-ie:
+      - {value: I, score: 0}
+    双拼声母-n:
+      - {value: d, score: 0}
+    双拼声母-k:
+      - {value: x, score: 0}
+    双拼声母-p:
+      - {value: w, score: 0}
+    双拼声母-sh:
+      - {value: g, score: 0}
+    双拼韵母-eng:
+      - {value: D, score: 0}
+    双拼韵母-ou:
+      - {value: G, score: 0}
+    双拼韵母-u:
+      - {value: K, score: 0}
+    双拼韵母-uo:
+      - {value: C, score: 0}
+    双拼韵母-ve:
+      - {value: H, score: 0}
+    双拼声母-0:
+      - {value: e, score: 0}
+    双拼声母-s:
+      - {value: b, score: 0}
+    双拼韵母-e:
+      - {value: A, score: 0}
+    双拼韵母-v:
+      - {value: I, score: 0}
+    双拼声母-x:
+      - {value: s, score: 0}
+    双拼声母-g:
+      - {value: z, score: 0}
+    双拼声母-y:
+      - {value: v, score: 0}
+    戊:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    生:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-eng, index: 0}], score: 0}
+    豸:
+      - {value: {element: 犬}, score: 0}
+    毛:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ui, index: 0}], score: 0}
+    可:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    水:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-ui, index: 0}], score: 0}
+    言:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    丈:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    西:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    方:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    也:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    廴:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+    戈:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    者:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    氏:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    高:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    而:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    五:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    十:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ia, index: 0}], score: 0}
+    八:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    聿:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    之:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    未:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    目:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    大:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    载:
+      - {value: [{element: 双拼声母-z, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    :
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-iang, index: 0}], score: 0}
+    见:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    入:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    糸:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    片:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    鬲:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    巳:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    歹:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    日:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    虎:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    厂:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    火:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-uo, index: 0}], score: 0}
+    亦:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    口:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    飞:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    干:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    卅:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    劳:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    亍:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    合:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    已:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    谷:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    祭:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    里:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    鹿:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    爱:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    亡:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    竹:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    文:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    云:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-un, index: 0}], score: 0}
+    攵:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    车:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    面:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    臣:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    气:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    弓:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    母:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    且:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ie, index: 0}], score: 0}
+    乍:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    广:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-uang, index: 0}], score: 0}
+    矢:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    :
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    金:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    斤:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ve, index: 0}], score: 0}
+    巾:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    欠:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    木:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    丩:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-iu, index: 0}], score: 0}
+    丬:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    甘:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    彡:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    电:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    黄:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-uang, index: 0}], score: 0}
+    子:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-er, index: 0}], score: 0}
+    父:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+    止:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    川:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+    刀:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    雨:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    冫:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    亥:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    疋:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    丁:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    白:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    门:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    廿:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    宀:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    米:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    力:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    卜:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-o, index: 0}], score: 0}
+    穴:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-ve, index: 0}], score: 0}
+    古:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    艹:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    占:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    六:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-iu, index: 0}], score: 0}
+    直:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    㐄:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-ua, index: 0}], score: 0}
+    彐:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    人:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    马:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    衣:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    四:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    卩:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ie, index: 0}], score: 0}
+    弋:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    工:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    黑:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    页:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    夫:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    千:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    业:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    三:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    厶:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    羊:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    瓦:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    七:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    示:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    夕:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    心:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    耳:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ie, index: 0}], score: 0}
+    犬:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+    甲:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ia, index: 0}], score: 0}
+    禾:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    自:
+      - {value: [{element: 双拼声母-z, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    骨:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    同:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    艮:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    井:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    及:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    士:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    乂:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    兔:
+      - {value: [{element: 双拼声母-h, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    辛:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+    贝:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    习:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    今:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+    屮:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    壬:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    土:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    又:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    足:
+      - {value: [{element: 双拼声母-z, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    身:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    由:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    户:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    月:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    巴:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    王:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-uo, index: 0}], score: 0}
+    鱼:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    虫:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    尚:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    舟:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    皿:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-in, index: 0}], score: 0}
+    本:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    勹:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    爪:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    仑:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-un, index: 0}], score: 0}
+    落:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-uo, index: 0}], score: 0}
+    女:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+    丰:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-eng, index: 0}], score: 0}
+    豆:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    牙:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    了:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    非:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    无:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    石:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    角:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    二:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-er, index: 0}], score: 0}
+    毋:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    冖:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    鼠:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    毌:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+    句:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+    册:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    鬼:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    食:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    民:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    予:
+      - {value: [{element: 双拼声母-z, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    内:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    隹:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-ui, index: 0}], score: 0}
+    关:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+    皮:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    彳:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    尸:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    寸:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-un, index: 0}], score: 0}
+    束:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    龙:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    甫:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    光:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    亻:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    弗:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-u, index: 0}], score: 0}
+    牛:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-iu, index: 0}], score: 0}
+    九:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    韦:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    儿:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-o, index: 0}], score: 0}
+    曰:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ve, index: 0}], score: 0}
+    夂:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    尤:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    支:
+      - {value: [{element: 双拼声母-c, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    :
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    长:
+      - {value: [{element: 双拼声母-p, index: 0}, {element: 双拼韵母-o, index: 0}], score: 0}
+    乡:
+      - {value: [{element: 双拼声母-r, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    山:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    手:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    用:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ong, index: 0}], score: 0}
+    幺:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    斗:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    田:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-ian, index: 0}], score: 0}
+    疒:
+      - {value: [{element: 双拼声母-b, index: 0}, {element: 双拼韵母-ing, index: 0}], score: 0}
+    匕:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-iong, index: 0}], score: 0}
+    缶:
+      - {value: [{element: 双拼声母-f, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    曲:
+      - {value: [{element: 双拼声母-q, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+    豕:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    乃:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    革:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    刂:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    亠:
+      - {value: [{element: 双拼声母-t, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    囗:
+      - {value: [{element: 双拼声母-k, index: 0}, {element: 双拼韵母-uang, index: 0}], score: 0}
+    :
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    鸟:
+      - {value: [{element: 双拼声母-n, index: 0}, {element: 双拼韵母-iao, index: 0}], score: 0}
+    立:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    乌:
+      - {value: [{element: 双拼声母-x, index: 0}, {element: 双拼韵母-v, index: 0}], score: 0}
+    己:
+      - {value: [{element: 双拼声母-w, index: 0}, {element: 双拼韵母-ei, index: 0}], score: 0}
+    其:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-en, index: 0}], score: 0}
+    臼:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-iu, index: 0}], score: 0}
+    小:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    舌:
+      - {value: [{element: 双拼声母-sh, index: 0}, {element: 双拼韵母-e, index: 0}], score: 0}
+    辶:
+      - {value: [{element: 双拼声母-ch, index: 0}, {element: 双拼韵母-uo, index: 0}], score: 0}
+    吉:
+      - {value: [{element: 双拼声母-j, index: 0}, {element: 双拼韵母-i, index: 0}], score: 0}
+    不:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-a, index: 0}], score: 0}
+    几:
+      - {value: [{element: 双拼声母-0, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    走:
+      - {value: [{element: 双拼声母-z, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    卯:
+      - {value: [{element: 双拼声母-m, index: 0}, {element: 双拼韵母-ao, index: 0}], score: 0}
+    卵:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-uan, index: 0}], score: 0}
+    两:
+      - {value: [{element: 双拼声母-l, index: 0}, {element: 双拼韵母-iang, index: 0}], score: 0}
+    酉:
+      - {value: [{element: 双拼声母-y, index: 0}, {element: 双拼韵母-ou, index: 0}], score: 0}
+    矛:
+      - {value: [{element: 双拼声母-d, index: 0}, {element: 双拼韵母-un, index: 0}], score: 0}
+    瓜:
+      - {value: [{element: 双拼声母-g, index: 0}, {element: 双拼韵母-ua, index: 0}], score: 0}
+    :
+      - {value: {element: 川}, score: 0}
+    :
+      - {value: {element: 鸟}, score: 0}
+    釒:
+      - {value: {element: 金}, score: 0}
+    :
+      - {value: {element: 其}, score: 0}
+    :
+      - {value: {element: 册}, score: 0}
+    :
+      - {value: {element: 尚}, score: 0}
+    忄:
+      - {value: {element: 心}, score: 0}
+    :
+      - {value: {element: 车}, score: 0}
+    :
+      - {value: {element: 止}, score: 0}
+    :
+      - {value: {element: 丬}, score: 0}
+    :
+      - {value: {element: 聿}, score: 0}
+    彑:
+      - {value: {element: 彐}, score: 0}
+    :
+      - {value: {element: 电}, score: 0}
+    :
+      - {value: {element: 用}, score: 0}
+    :
+      - {value: {element: 米}, score: 0}
+    龵:
+      - {value: {element: 手}, score: 0}
+    :
+      - {value: {element: 日}, score: 0}
+    :
+      - {value: {element: 止}, score: 0}
+    :
+      - {value: {element: 亦}, score: 0}
+    :
+      - {value: {element: 同}, score: 0}
+    钅:
+      - {value: {element: 金}, score: 0}
+    犭:
+      - {value: {element: 犬}, score: 0}
+    :
+      - {value: {element: 刂}, score: 0}
+    氵:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-an, index: 0}], score: 0}
+    :
+      - {value: {element: 卩}, score: 0}
+    :
+      - {value: {element: 丰}, score: 0}
+    爿:
+      - {value: {element: 丬}, score: 0}
+    :
+      - {value: {element: 止}, score: 0}
+    車:
+      - {value: {element: 车}, score: 0}
+    匚:
+      - {value: {element: 丩}, score: 0}
+    :
+      - {value: {element: 井}, score: 0}
+    :
+      - {value: {element: 舌}, score: 0}
+    :
+      - {value: {element: 尸}, score: 0}
+    :
+      - {value: {element: 云}, score: 0}
+    :
+      - {value: {element: 八}, score: 0}
+    :
+      - {value: {element: 刀}, score: 0}
+    :
+      - {value: {element: 鸟}, score: 0}
+    :
+      - {value: {element: 小}, score: 0}
+    :
+      - {value: {element: 心}, score: 0}
+    :
+      - {value: {element: 彳}, score: 0}
+    :
+      - {value: {element: 吉}, score: 0}
+    覀:
+      - {value: {element: 西}, score: 0}
+    礻:
+      - {value: {element: 示}, score: 0}
+    尢:
+      - {value: {element: 艹}, score: 0}
+    :
+      - {value: {element: 人}, score: 0}
+    無:
+      - {value: {element: 无}, score: 0}
+    :
+      - {value: {element: 页}, score: 0}
+    罒:
+      - {value: {element: 四}, score: 0}
+    扌:
+      - {value: {element: 手}, score: 0}
+    :
+      - {value: {element: 彳}, score: 0}
+    牜:
+      - {value: {element: 牛}, score: 0}
+    :
+      - {value: {element: 页}, score: 0}
+    鳥:
+      - {value: {element: 鸟}, score: 0}
+    :
+      - {value: {element: 谷}, score: 0}
+    :
+      - {value: {element: 㐄}, score: 0}
+    :
+      - {value: {element: 爱}, score: 0}
+    巜:
+      - {value: {element: 川}, score: 0}
+    :
+      - {value: {element: 疋}, score: 0}
+    :
+      - {value: {element: 羊}, score: 0}
+    :
+      - {value: {element: 业}, score: 0}
+    :
+      - {value: {element: 禾}, score: 0}
+    :
+      - {value: {element: 禾}, score: 0}
+    :
+      - {value: {element: 竹}, score: 0}
+    :
+      - {value: {element: 川}, score: 0}
+    :
+      - {value: {element: 水}, score: 0}
+    :
+      - {value: {element: 歹}, score: 0}
+    歺:
+      - {value: {element: 歹}, score: 0}
+    :
+      - {value: {element: 儿}, score: 0}
+    魚:
+      - {value: {element: 鱼}, score: 0}
+    :
+      - {value: {element: 载}, score: 0}
+    :
+      - {value: {element: 手}, score: 0}
+    :
+      - {value: {element: 角}, score: 0}
+    戶:
+      - {value: {element: 户}, score: 0}
+    禸:
+      - {value: {element: 内}, score: 0}
+    :
+      - {value: {element: 戊}, score: 0}
+    纟:
+      - {value: {element: 糸}, score: 0}
+    :
+      - {value: {element: 冫}, score: 0}
+    糹:
+      - {value: {element: 糸}, score: 0}
+    :
+      - {value: {element: 乌}, score: 0}
+    :
+      - {value: {element: 几}, score: 0}
+    :
+      - {value: {element: 卅}, score: 0}
+    :
+      - {value: {element: 目}, score: 0}
+    :
+      - {value: {element: 同}, score: 0}
+    :
+      - {value: {element: 疋}, score: 0}
+    :
+      - {value: {element: 冫}, score: 0}
+    旡:
+      - {value: {element: 无}, score: 0}
+    冂:
+      - {value: {element: 同}, score: 0}
+    戉:
+      - {value: {element: 戊}, score: 0}
+    :
+      - {value: {element: 衣}, score: 0}
+    :
+      - {value: {element: 羊}, score: 0}
+    :
+      - {value: {element: 彐}, score: 0}
+    :
+      - {value: {element: 屮}, score: 0}
+    :
+      - {value: {element: 鼠}, score: 0}
+    :
+      - {value: {element: 月}, score: 0}
+    :
+      - {value: {element: 立}, score: 0}
+    :
+      - {value: {element: 丩}, score: 0}
+    :
+      - {value: {element: 匕}, score: 0}
+    :
+      - {value: {element: 十}, score: 0}
+    :
+      - {value: {element: 手}, score: 0}
+    :
+      - {value: {element: 黑}, score: 0}
+    :
+      - {value: {element: 聿}, score: 0}
+    :
+      - {value: {element: }, score: 0}
+    :
+      - {value: {element: 马}, score: 0}
+    :
+      - {value: {element: 缶}, score: 0}
+    :
+      - {value: {element: 丈}, score: 0}
+    :
+      - {value: {element: 氵}, score: 0}
+    龷:
+      - {value: {element: 廿}, score: 0}
+    氺:
+      - {value: {element: 水}, score: 0}
+    :
+      - {value: {element: 聿}, score: 0}
+    髟:
+      - {value: {element: 长}, score: 0}
+    韋:
+      - {value: {element: 韦}, score: 0}
+    䒑:
+      - {value: {element: 八}, score: 0}
+    :
+      - {value: {element: 丈}, score: 0}
+    :
+      - {value: {element: 虎}, score: 0}
+    :
+      - {value: {element: 彡}, score: 0}
+    :
+      - {value: {element: 屮}, score: 0}
+    :
+      - {value: {element: 弗}, score: 0}
+    㔾:
+      - {value: {element: 卩}, score: 0}
+    癶:
+      - {value: {element: 祭}, score: 0}
+    :
+      - {value: {element: 丬}, score: 0}
+    亾:
+      - {value: {element: 亡}, score: 0}
+    :
+      - {value: {element: 鹿}, score: 0}
+    :
+      - {value: {element: 竹}, score: 0}
+    :
+      - {value: {element: 刀}, score: 0}
+    卝:
+      - {value: {element: 艹}, score: 0}
+    :
+      - {value: {element: 鹿}, score: 0}
+    :
+      - {value: {element: 七}, score: 0}
+    :
+      - {value: {element: 又}, score: 0}
+    :
+      - {value: {element: 册}, score: 0}
+    :
+      - {value: {element: 羊}, score: 0}
+    :
+      - {value: {element: 疋}, score: 0}
+    朩:
+      - {value: {element: 木}, score: 0}
+    :
+      - {value: {element: 臣}, score: 0}
+    龶:
+      - {value: {element: 丰}, score: 0}
+    :
+      - {value: {element: 内}, score: 0}
+    :
+      - {value: {element: 匕}, score: 0}
+    :
+      - {value: {element: 祭}, score: 0}
+    卌:
+      - {value: {element: 卅}, score: 0}
+    龸:
+      - {value: {element: 尚}, score: 0}
+    衤:
+      - {value: {element: 衣}, score: 0}
+    饣:
+      - {value: {element: 食}, score: 0}
+    :
+      - {value: {element: 高}, score: 0}
+    烏:
+      - {value: {element: 乌}, score: 0}
+    :
+      - {value: {element: 足}, score: 0}
+    :
+      - {value: {element: 角}, score: 0}
+    镸:
+      - {value: {element: 长}, score: 0}
+    耂:
+      - {value: {element: 者}, score: 0}
+    :
+      - {value: {element: 高}, score: 0}
+    :
+      - {value: {element: 王}, score: 0}
+    :
+      - {value: {element: 牛}, score: 0}
+    :
+      - {value: {element: 尚}, score: 0}
+    :
+      - {value: {element: 戈}, score: 0}
+    :
+      - {value: {element: 高}, score: 0}
+    :
+      - {value: {element: 丩}, score: 0}
+    :
+      - {value: {element: 亦}, score: 0}
+    :
+      - {value: {element: 页}, score: 0}
+    :
+      - {value: {element: 大}, score: 0}
+    肀:
+      - {value: {element: 聿}, score: 0}
+    :
+      - {value: {element: 丬}, score: 0}
+    :
+      - {value: {element: 豕}, score: 0}
+    :
+      - {value: {element: 乃}, score: 0}
+    廾:
+      - {value: {element: 艹}, score: 0}
+    攴:
+      - {value: {element: 攵}, score: 0}
+    阝:
+      - {value: {element: 卩}, score: 0}
+    凵:
+      - {value: {element: 同}, score: 0}
+    :
+      - {value: {element: 丩}, score: 0}
+    :
+      - {value: {element: }, score: 0}
+    丌:
+      - {value: {element: 艹}, score: 0}
+    讠:
+      - {value: {element: 言}, score: 0}
+    :
+      - {value: {element: 电}, score: 0}
+    :
+      - {value: {element: 土}, score: 0}
+    :
+      - {value: {element: 落}, score: 0}
+    :
+      - {value: {element: 亦}, score: 0}
+    㐅:
+      - {value: {element: 乂}, score: 0}
+    :
+      - {value: {element: }, score: 0}
+    :
+      - {value: {element: 水}, score: 0}
+    龺:
+      - {value: {element: 直}, score: 0}
+    :
+      - {value: {element: 聿}, score: 0}
+    龹:
+      - {value: {element: 关}, score: 0}
+    :
+      - {value: {element: 业}, score: 0}
+    :
+      - {value: {element: 木}, score: 0}
+    爫:
+      - {value: {element: 爪}, score: 0}
+    :
+      - {value: {element: 小}, score: 0}
+    :
+      - {value: {element: 匕}, score: 0}
+    :
+      - {value: {element: 鼠}, score: 0}
+    夊:
+      - {value: {element: 夂}, score: 0}
+    :
+      - {value: {element: }, score: 0}
+    :
+      - {value: {element: 月}, score: 0}
+    :
+      - {value: {element: 卜}, score: 0}
+    兦:
+      - {value: {element: 亡}, score: 0}
+    :
+      - {value: {element: 同}, score: 0}
+    :
+      - {value: {element: 丰}, score: 0}
+    :
+      - {value: {element: 艮}, score: 0}
+    :
+      - {value: {element: 刂}, score: 0}
+    :
+      - {value: {element: 衣}, score: 0}
+    𡈼:
+      - {value: {element: 壬}, score: 0}
+    :
+      - {value: {element: 厂}, score: 0}
+    侖:
+      - {value: {element: 仑}, score: 0}
+    :
+      - {value: {element: 厶}, score: 0}
+    龴:
+      - {value: {element: 厶}, score: 0}
+    :
+      - {value: {element: 卯}, score: 0}
+    :
+      - {value: {element: 月}, score: 0}
+    :
+      - {value: {element: 日}, score: 0}
+    :
+      - {value: {element: 黑}, score: 0}
+    :
+      - {value: {element: 兔}, score: 0}
+    :
+      - {value: {element: 八}, score: 0}
+    :
+      - {value: {element: 劳}, score: 0}
+    亽:
+      - {value: {element: 今}, score: 0}
+    長:
+      - {value: {element: 长}, score: 0}
+    亼:
+      - {value: {element: 合}, score: 0}
+    虍:
+      - {value: {element: 虎}, score: 0}
+    :
+      - {value: {element: 衣}, score: 0}
+    龰:
+      - {value: {element: 止}, score: 0}
+    :
+      - {value: {element: 力}, score: 0}
+    馬:
+      - {value: {element: 马}, score: 0}
+    :
+      - {value: {element: 黄}, score: 0}
+    鬥:
+      - {value: {element: 斗}, score: 0}
+    :
+      - {value: {element: 水}, score: 0}
+    :
+      - {value: {element: 月}, score: 0}
+    :
+      - {value: {element: 手}, score: 0}
+    :
+      - {value: {element: 卩}, score: 0}
+    巛:
+      - {value: {element: 川}, score: 0}
+    飠:
+      - {value: {element: 食}, score: 0}
+    丷:
+      - {value: {element: 八}, score: 0}
+    艸:
+      - {value: {element: 艹}, score: 0}
+    󲰪:
+      - {value: {element: 劳}, score: 0}
+    :
+      - {value: {element: 小}, score: 0}
+    :
+      - {value: {element: 彐}, score: 0}
+    :
+      - {value: {element: 斤}, score: 0}
+    :
+      - {value: {element: 井}, score: 0}
+    灬:
+      - {value: {element: 火}, score: 0}
+    :
+      - {value: {element: 辛}, score: 0}
+    :
+      - {value: {element: 衣}, score: 0}
+    :
+      - {value: {element: 虫}, score: 0}
+    :
+      - {value: {element: 臼}, score: 0}
+    :
+      - {value: {element: 十}, score: 0}
+    䶹:
+      - {value: {element: 屮}, score: 0}
+    :
+      - {value: {element: 金}, score: 0}
+    :
+      - {value: {element: 丩}, score: 0}
+    㐆:
+      - {value: {element: 身}, score: 0}
+    :
+      - {value: {element: 雨}, score: 0}
+    :
+      - {value: {element: 水}, score: 0}
+    :
+      - {value: {element: 彳}, score: 0}
+    :
+      - {value: {element: 角}, score: 0}
+    :
+      - {value: {element: 刂}, score: 0}
+    :
+      - {value: {element: 刂}, score: 0}
+    :
+      - {value: {element: 尸}, score: 0}
+    冎:
+      - {value: {element: 骨}, score: 0}
+    付:
+      - {value: [{element: 双拼声母-zh, index: 0}, {element: 双拼韵母-ang, index: 0}], score: 0}
+    比:
+      - {value: [{element: 双拼声母-s, index: 0}, {element: 双拼韵母-ai, index: 0}], score: 0}
+    :
+      - {value: {element: 比}, score: 0}
+  mapping_variables:
+    left:
+      keys: [q, w, e, r, t, a, s, d, f, g, z, x, c, v, b]
+    十二指法:
+      keys: [A, B, C, D, E, F, G, H, J, I, K, L]
+  mapping_generators:
+    - regex: ^双拼韵母-.+$
+      value: {value: [{variable: 十二指法}], score: 0}
+    - regex: ^双拼声母-[zcs]h$
+      value: {value: [{variable: left}], score: 0}
+    - regex: ^双拼声母-[jqxrw0]$
+      value: {value: [{variable: left}], score: 0}
+encoder:
+  max_length: 6
+  select_keys:
+    - _
+    - ;
+  auto_select_length: 6
+  sources:
+    s0:
+      object: null
+      next: s21
+    s1:
+      object: {type: 字根, rootIndex: 1}
+      index: 0
+      next: c0
+    s2:
+      object: {type: 字根, rootIndex: 2}
+      index: 0
+      next: c1
+    s3:
+      object: {type: 字根, rootIndex: 1}
+      index: 1
+      next: null
+    s4:
+      object: {type: 字根, rootIndex: 2}
+      index: 1
+      next: null
+    s5:
+      object: {type: 字根, rootIndex: 3}
+      index: 0
+      next: c2
+    s6:
+      object: {type: 字根, rootIndex: -1}
+      index: 0
+      next: null
+    s7:
+      object: {type: 字根, rootIndex: 3}
+      index: 1
+      next: null
+    s8:
+      object: {type: 字音, subtype: 双拼声母}
+      next: s9
+    s9:
+      object: {type: 字音, subtype: 双拼韵母}
+      next: s21
+    s10:
+      object: {type: 字根, rootIndex: 1}
+      index: 0
+      next: s11
+    s11:
+      object: {type: 字根, rootIndex: 1}
+      index: 1
+      next: c3
+    s12:
+      object: {type: 字根, rootIndex: -1}
+      index: 0
+      next: s14
+    s13:
+      object: {type: 字音, subtype: 双拼声母}
+      next: s15
+    s14:
+      object: {type: 字根, rootIndex: -1}
+      index: 1
+      next: null
+    s15:
+      object: {type: 字音, subtype: 双拼韵母}
+      next: null
+    s20:
+      object: {type: 字音, subtype: 双拼韵母}
+      next: s10
+    s21:
+      object: {type: 字音, subtype: 双拼声母}
+      next: s20
+  conditions:
+    c0:
+      object: {type: 字根, rootIndex: 2}
+      operator: 存在
+      positive: s2
+      negative: s3
+    c1:
+      object: {type: 字根, rootIndex: 3}
+      operator: 存在
+      positive: s5
+      negative: s4
+    c2:
+      object: {type: 字根, rootIndex: 4}
+      operator: 存在
+      positive: s6
+      negative: s7
+    c3:
+      object: {type: 字根, rootIndex: 2}
+      operator: 存在
+      positive: s12
+      negative: s13
+  rules:
+    - length_equal: 2
+      formula: AaAbBaBbAcAd
+    - length_equal: 3
+      formula: AaAbBaBbCaCb
+    - length_in_range: [4, 10]
+      formula: AaAbBaBbZaZb
+  short_code:
+    - length_equal: 1
+      schemes: [{prefix: 2, count: 2}, {prefix: 4, count: 1}]
+optimization:
+  objective:
+    characters_full:
+      tiers: [{top: 3000, duplication: 0.3}, {top: 6000, duplication: 0.02}, {duplication: 0.001}]
+      duplication: 10
+    characters_short:
+      tiers: [{top: 3000, duplication: 50, levels: [{length: 3, frequency: 0.1}, {length: 5, frequency: 0.5}, {length: 6, frequency: 100}]}, {top: 1500, duplication: 100, levels: [{length: 3, frequency: 0.1}, {length: 5, frequency: 0.5}, {length: 6, frequency: 500}]}]
+      duplication: 10
+      key_distribution: 0.01
+      pair_equivalence: 0.05
+      levels: [{length: 3, frequency: 0.06}, {length: 5, frequency: 0.2}, {length: 6, frequency: 1}]
+    regularization_strength: 0.01
+  metaheuristic:
+    algorithm: SimulatedAnnealing
+    parameters:
+      t_max: 1
+      t_min: 0.000001
+      steps: 10000
+diagram:
+  layout:
+    - keys: [Q, W, E, R, T, 'Y', U, I, O, P]
+    - keys: [q, w, e, r, t, 'y', u, i, o, p]
+    - keys: [A, S, D, F, G, H, J, K, L, ':']
+    - keys: [a, s, d, f, g, h, j, k, l, ;]
+    - keys: [Z, X, C, V, B, 'N', M, <, '>', '?']
+    - keys: [z, x, c, v, b, 'n', m, ',', ., /]
+  contents:
+    - type: key
+    - type: element
+  row_style: |-
+    display: flex;
+    justify-content: center;
+    gap: 2mm;
+  cell_style: |-
+    position: relative;
+    width: 25mm;
+    height: 25mm;
+    border: 0.3mm #d3d3d3 solid;
+    border-radius: 1mm;
